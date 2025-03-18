@@ -1,4 +1,3 @@
-
 // South Indian recipe images - replace with your own images in production
 const southIndianImages = [
   "https://images.unsplash.com/photo-1589778655375-3e622a9fc8c8?q=80&w=2787&auto=format&fit=crop",
@@ -301,7 +300,8 @@ export const southIndianRecipes = [
     chef: "Venkatesh Bhat",
     cuisine: "South Indian",
     category: "Side Dish",
-    difficulty: "Easy"
+    difficulty: "Easy",
+    tags: ["south indian", "lentil", "soup", "vegetarian", "tamarind"]
   },
   {
     id: "8",
@@ -315,7 +315,8 @@ export const southIndianRecipes = [
     chef: "Sarah Todd",
     cuisine: "South Indian",
     category: "Breakfast",
-    difficulty: "Medium"
+    difficulty: "Medium",
+    tags: ["south indian", "kerala", "breakfast", "coconut", "fermented"]
   },
   {
     id: "9",
@@ -329,7 +330,8 @@ export const southIndianRecipes = [
     chef: "Nisha Madhulika",
     cuisine: "South Indian",
     category: "Breakfast",
-    difficulty: "Easy"
+    difficulty: "Easy",
+    tags: ["south indian", "breakfast", "quick", "semolina", "vegetarian"]
   },
   {
     id: "10",
@@ -343,7 +345,8 @@ export const southIndianRecipes = [
     chef: "K.T. Achaya",
     cuisine: "South Indian",
     category: "Soup",
-    difficulty: "Easy"
+    difficulty: "Easy",
+    tags: ["south indian", "soup", "tamarind", "spicy", "tomato"]
   },
   {
     id: "11",
@@ -357,7 +360,8 @@ export const southIndianRecipes = [
     chef: "Revathi Shanmugam",
     cuisine: "South Indian",
     category: "Breakfast",
-    difficulty: "Easy"
+    difficulty: "Easy",
+    tags: ["south indian", "rice", "lentil", "festival", "comfort food"]
   },
   {
     id: "12",
@@ -371,7 +375,8 @@ export const southIndianRecipes = [
     chef: "Thomas Zacharias",
     cuisine: "South Indian",
     category: "Side Dish",
-    difficulty: "Medium"
+    difficulty: "Medium",
+    tags: ["south indian", "kerala", "vegetarian", "coconut", "yogurt"]
   },
 ];
 

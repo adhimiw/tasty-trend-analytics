@@ -17,6 +17,7 @@ interface RecipeCardProps {
   category: string;
   className?: string;
   featured?: boolean;
+  style?: React.CSSProperties;
 }
 
 const RecipeCard = ({
@@ -31,6 +32,7 @@ const RecipeCard = ({
   category,
   className,
   featured = false,
+  style,
 }: RecipeCardProps) => {
   return (
     <Link
@@ -40,6 +42,7 @@ const RecipeCard = ({
         featured ? "shadow-md" : "border border-border shadow-sm",
         className
       )}
+      style={style}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
