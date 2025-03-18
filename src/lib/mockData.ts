@@ -10,6 +10,66 @@ const southIndianImages = [
   "https://images.unsplash.com/photo-1631292784641-440255e0a21c?q=80&w=2480&auto=format&fit=crop"
 ];
 
+// Baking images
+const bakingImages = [
+  "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1565599837634-134a554d20de?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2689&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551404973-761c83957d5d?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2752&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=2787&auto=format&fit=crop"
+];
+
+// Quick dinner images
+const quickDinnerImages = [
+  "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1604908176997-125f7c9c7e5b?q=80&w=2733&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1564834423906-8a3f66aa0bb8?q=80&w=2933&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=2070&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1585672840563-f2af2ced55c9?q=80&w=2530&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=2935&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=2936&auto=format&fit=crop"
+];
+
+// Beverage images
+const beverageImages = [
+  "https://images.unsplash.com/photo-1556679343-c1306ee5277b?q=80&w=2864&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=2160&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1560508180-03f285f67ded?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1543363950-c78545037afc?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1605548109944-9040d0972bf3?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1532635241-17e6cc2da4c4?q=80&w=2830&auto=format&fit=crop"
+];
+
+// One pot meal images
+const onePotMealImages = [
+  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551462147-ff29053bfc14?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2862&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1640719028782-8230f1bdc0c2?q=80&w=2730&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=2880&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1564671546498-09a366692274?q=80&w=2874&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=2574&auto=format&fit=crop"
+];
+
+// Soup & Stew images
+const soupStewImages = [
+  "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1605490596148-3178fa6d8e4e?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1583608564767-86cd2c805e5f?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1620791144170-8a443bf37a33?q=80&w=2864&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1621957773287-4fc7c7a41b05?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1614398751058-eb2e0bf63e53?q=80&w=2786&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1604152135912-04a022e23696?q=80&w=2787&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=2000&auto=format&fit=crop"
+];
+
 // Ingredient images
 const ingredientImages = [
   "https://images.unsplash.com/photo-1550431221-6f3f7366a1b1?q=80&w=2787&auto=format&fit=crop", // Coconut
@@ -380,6 +440,630 @@ export const southIndianRecipes = [
   },
 ];
 
+export const bakingRecipes = [
+  {
+    id: "b1",
+    title: "Classic Chocolate Chip Cookies",
+    description: "The perfect balance of chewy centers and crisp edges, these chocolate chip cookies are a timeless favorite that's easy to make.",
+    image: bakingImages[0],
+    rating: 4.9,
+    prepTime: 15,
+    cookTime: 12,
+    servings: 24,
+    chef: "Martha Bennett",
+    cuisine: "American",
+    category: "Baking",
+    difficulty: "Easy",
+    tags: ["baking", "cookies", "dessert", "chocolate", "quick"]
+  },
+  {
+    id: "b2",
+    title: "Artisan Sourdough Bread",
+    description: "A rustic loaf with crispy crust and tender, chewy interior. This classic sourdough recipe uses a natural starter for complex flavor and texture.",
+    image: bakingImages[1],
+    rating: 4.7,
+    prepTime: 30,
+    cookTime: 45,
+    servings: 8,
+    chef: "Paul Hollywood",
+    cuisine: "European",
+    category: "Baking",
+    difficulty: "Medium",
+    tags: ["baking", "bread", "sourdough", "artisan", "fermented"]
+  },
+  {
+    id: "b3",
+    title: "French Macarons with Buttercream Filling",
+    description: "Delicate almond meringue cookies with a crisp shell and chewy interior, sandwiched around a smooth buttercream filling.",
+    image: bakingImages[2],
+    rating: 4.6,
+    prepTime: 45,
+    cookTime: 15,
+    servings: 20,
+    chef: "Claire Saffitz",
+    cuisine: "French",
+    category: "Baking",
+    difficulty: "Hard",
+    tags: ["baking", "french", "cookies", "dessert", "gourmet"]
+  },
+  {
+    id: "b4",
+    title: "Cinnamon Swirl Banana Bread",
+    description: "Moist banana bread with a sweet cinnamon swirl running through the center and a crunchy streusel topping.",
+    image: bakingImages[3],
+    rating: 4.8,
+    prepTime: 20,
+    cookTime: 60,
+    servings: 10,
+    chef: "Christina Tosi",
+    cuisine: "American",
+    category: "Baking",
+    difficulty: "Easy",
+    tags: ["baking", "bread", "banana", "cinnamon", "breakfast"]
+  },
+  {
+    id: "b5",
+    title: "Flaky Butter Croissants",
+    description: "Classic French pastries with dozens of buttery, flaky layers and a golden, crisp exterior. Worth the time and effort!",
+    image: bakingImages[4],
+    rating: 4.9,
+    prepTime: 60,
+    cookTime: 25,
+    servings: 12,
+    chef: "Dominique Ansel",
+    cuisine: "French",
+    category: "Baking",
+    difficulty: "Hard",
+    tags: ["baking", "french", "pastry", "breakfast", "butter"]
+  },
+  {
+    id: "b6",
+    title: "Rustic Apple Galette",
+    description: "A free-form apple tart with a buttery, flaky crust and cinnamon-spiced apple filling. Simpler than pie but just as delicious!",
+    image: bakingImages[5],
+    rating: 4.7,
+    prepTime: 30,
+    cookTime: 45,
+    servings: 8,
+    chef: "Ina Garten",
+    cuisine: "French",
+    category: "Baking",
+    difficulty: "Medium",
+    tags: ["baking", "dessert", "apple", "pie", "french"]
+  },
+  {
+    id: "b7",
+    title: "Fluffy Buttermilk Biscuits",
+    description: "Tall, tender biscuits with countless flaky layers. Perfect alongside soups or slathered with butter and honey.",
+    image: bakingImages[6],
+    rating: 4.8,
+    prepTime: 15,
+    cookTime: 15,
+    servings: 12,
+    chef: "Carla Hall",
+    cuisine: "American",
+    category: "Baking",
+    difficulty: "Medium",
+    tags: ["baking", "bread", "breakfast", "southern", "buttermilk"]
+  },
+  {
+    id: "b8",
+    title: "Red Velvet Cupcakes with Cream Cheese Frosting",
+    description: "Moist, cocoa-infused cupcakes with a vibrant red color, topped with tangy cream cheese frosting.",
+    image: bakingImages[7],
+    rating: 4.8,
+    prepTime: 25,
+    cookTime: 20,
+    servings: 12,
+    chef: "Sally McKenney",
+    cuisine: "American",
+    category: "Baking",
+    difficulty: "Medium",
+    tags: ["baking", "cupcakes", "dessert", "cream cheese", "chocolate"]
+  }
+];
+
+export const quickDinnerRecipes = [
+  {
+    id: "q1",
+    title: "30-Minute Pesto Pasta with Cherry Tomatoes",
+    description: "A speedy pasta dish featuring fresh basil pesto, sweet cherry tomatoes, and grated Parmesan cheese. Ready in just 30 minutes!",
+    image: quickDinnerImages[0],
+    rating: 4.7,
+    prepTime: 10,
+    cookTime: 20,
+    servings: 4,
+    chef: "Jamie Oliver",
+    cuisine: "Italian",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "pasta", "vegetarian", "italian", "weeknight"]
+  },
+  {
+    id: "q2",
+    title: "Sheet Pan Lemon Garlic Chicken & Vegetables",
+    description: "A complete meal on one pan! Chicken thighs roasted with potatoes, carrots, and broccoli in a lemony garlic sauce.",
+    image: quickDinnerImages[1],
+    rating: 4.8,
+    prepTime: 15,
+    cookTime: 25,
+    servings: 4,
+    chef: "Molly Baz",
+    cuisine: "American",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "chicken", "sheet pan", "roasted", "weeknight"]
+  },
+  {
+    id: "q3",
+    title: "15-Minute Shrimp Stir Fry",
+    description: "Plump shrimp stir-fried with colorful bell peppers, snow peas, and a savory ginger-garlic sauce. Served over steamed rice.",
+    image: quickDinnerImages[2],
+    rating: 4.6,
+    prepTime: 10,
+    cookTime: 5,
+    servings: 4,
+    chef: "Jet Tila",
+    cuisine: "Asian",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "seafood", "stir fry", "asian", "weeknight"]
+  },
+  {
+    id: "q4",
+    title: "Black Bean Quesadillas",
+    description: "Crispy tortillas filled with seasoned black beans, melted cheese, and spices. Serve with salsa, guacamole, and sour cream for an easy meatless meal.",
+    image: quickDinnerImages[3],
+    rating: 4.5,
+    prepTime: 10,
+    cookTime: 10,
+    servings: 4,
+    chef: "Rick Bayless",
+    cuisine: "Mexican",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "vegetarian", "mexican", "beans", "weeknight"]
+  },
+  {
+    id: "q5",
+    title: "Garlic Butter Salmon",
+    description: "Tender salmon fillets pan-seared in garlic butter and finished with a squeeze of lemon. Elegant enough for company but quick enough for weeknights.",
+    image: quickDinnerImages[4],
+    rating: 4.9,
+    prepTime: 5,
+    cookTime: 10,
+    servings: 4,
+    chef: "Gordon Ramsay",
+    cuisine: "American",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "seafood", "salmon", "low carb", "weeknight"]
+  },
+  {
+    id: "q6",
+    title: "Caprese Chicken Skillet",
+    description: "Seasoned chicken breasts topped with fresh mozzarella, tomatoes, and basil in a balsamic glaze. One pan, minimal cleanup!",
+    image: quickDinnerImages[5],
+    rating: 4.7,
+    prepTime: 10,
+    cookTime: 20,
+    servings: 4,
+    chef: "Gina Homolka",
+    cuisine: "Italian",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "chicken", "italian", "low carb", "weeknight"]
+  },
+  {
+    id: "q7",
+    title: "Speedy Beef Tacos",
+    description: "Seasoned ground beef, crisp lettuce, diced tomatoes, and cheese in warm tortillas. A family favorite ready in 20 minutes.",
+    image: quickDinnerImages[6],
+    rating: 4.6,
+    prepTime: 10,
+    cookTime: 10,
+    servings: 4,
+    chef: "Bobby Flay",
+    cuisine: "Mexican",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "beef", "mexican", "kid-friendly", "weeknight"]
+  },
+  {
+    id: "q8",
+    title: "Mediterranean Chickpea Salad",
+    description: "A vibrant no-cook meal with chickpeas, cucumber, tomatoes, feta, and olives tossed in a lemony herb dressing. Perfect for hot evenings!",
+    image: quickDinnerImages[7],
+    rating: 4.5,
+    prepTime: 15,
+    cookTime: 0,
+    servings: 4,
+    chef: "Yotam Ottolenghi",
+    cuisine: "Mediterranean",
+    category: "Quick Dinners",
+    difficulty: "Easy",
+    tags: ["quick dinners", "vegetarian", "salad", "no-cook", "mediterranean"]
+  }
+];
+
+export const beverageRecipes = [
+  {
+    id: "bev1",
+    title: "Fresh Strawberry Smoothie",
+    description: "A refreshing blend of strawberries, banana, Greek yogurt, and honey. Perfect for breakfast or a post-workout treat.",
+    image: beverageImages[0],
+    rating: 4.8,
+    prepTime: 5,
+    cookTime: 0,
+    servings: 2,
+    chef: "Kelly LeVeque",
+    cuisine: "American",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "smoothie", "breakfast", "fruit", "healthy"]
+  },
+  {
+    id: "bev2",
+    title: "Classic Cold Brew Coffee",
+    description: "Smooth, low-acid coffee concentrate brewed overnight. Dilute with water or milk and serve over ice for the perfect summer caffeine fix.",
+    image: beverageImages[1],
+    rating: 4.9,
+    prepTime: 10,
+    cookTime: 0,
+    servings: 6,
+    chef: "James Hoffmann",
+    cuisine: "American",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "coffee", "cold brew", "caffeine", "summer"]
+  },
+  {
+    id: "bev3",
+    title: "Watermelon Mint Agua Fresca",
+    description: "A light, refreshing Mexican-inspired drink made with fresh watermelon, lime juice, and mint leaves. Naturally sweetened and incredibly hydrating.",
+    image: beverageImages[2],
+    rating: 4.7,
+    prepTime: 10,
+    cookTime: 0,
+    servings: 4,
+    chef: "Pati Jinich",
+    cuisine: "Mexican",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "fruit", "mexican", "summer", "non-alcoholic"]
+  },
+  {
+    id: "bev4",
+    title: "Creamy Matcha Green Tea Latte",
+    description: "A soothing blend of ceremonial grade matcha powder, steamed milk, and a touch of honey. Enjoy hot or iced!",
+    image: beverageImages[3],
+    rating: 4.6,
+    prepTime: 5,
+    cookTime: 3,
+    servings: 1,
+    chef: "Emma Chamberlain",
+    cuisine: "Japanese",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "tea", "matcha", "japanese", "latte"]
+  },
+  {
+    id: "bev5",
+    title: "Classic Mojito",
+    description: "A refreshing cocktail featuring white rum, fresh lime juice, mint leaves, and a splash of soda water. A summer classic!",
+    image: beverageImages[4],
+    rating: 4.8,
+    prepTime: 5,
+    cookTime: 0,
+    servings: 1,
+    chef: "Dale DeGroff",
+    cuisine: "Cuban",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "cocktail", "rum", "mint", "summer"]
+  },
+  {
+    id: "bev6",
+    title: "Golden Turmeric Milk",
+    description: "A warming, anti-inflammatory drink made with turmeric, ginger, cinnamon, black pepper, and your choice of milk. Perfect before bedtime.",
+    image: beverageImages[5],
+    rating: 4.7,
+    prepTime: 5,
+    cookTime: 5,
+    servings: 2,
+    chef: "Samin Nosrat",
+    cuisine: "Indian",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "turmeric", "anti-inflammatory", "indian", "wellness"]
+  },
+  {
+    id: "bev7",
+    title: "Berry Hibiscus Iced Tea",
+    description: "A gorgeous ruby-colored tea made with hibiscus flowers, mixed berries, and a hint of honey. Served over ice for a refreshing summer drink.",
+    image: beverageImages[6],
+    rating: 4.6,
+    prepTime: 10,
+    cookTime: 5,
+    servings: 6,
+    chef: "Ina Garten",
+    cuisine: "American",
+    category: "Beverages",
+    difficulty: "Easy",
+    tags: ["beverages", "tea", "berries", "summer", "non-alcoholic"]
+  },
+  {
+    id: "bev8",
+    title: "Homemade Vanilla Bean Almond Milk",
+    description: "Creamy, naturally sweetened almond milk infused with real vanilla bean. Superior to store-bought and surprisingly easy to make at home.",
+    image: beverageImages[7],
+    rating: 4.8,
+    prepTime: 10,
+    cookTime: 0,
+    servings: 4,
+    chef: "Minimalist Baker",
+    cuisine: "American",
+    category: "Beverages",
+    difficulty: "Medium",
+    tags: ["beverages", "dairy-free", "vegan", "plant-based", "homemade"]
+  }
+];
+
+export const onePotMealRecipes = [
+  {
+    id: "op1",
+    title: "One-Pot Spaghetti Bolognese",
+    description: "A simplified version of the Italian classic where pasta cooks directly in the sauce, absorbing all the delicious flavors.",
+    image: onePotMealImages[0],
+    rating: 4.7,
+    prepTime: 10,
+    cookTime: 30,
+    servings: 4,
+    chef: "Giada De Laurentiis",
+    cuisine: "Italian",
+    category: "One Pot Meals",
+    difficulty: "Easy",
+    tags: ["one pot meals", "pasta", "beef", "italian", "family"]
+  },
+  {
+    id: "op2",
+    title: "Dutch Oven Whole Roasted Chicken",
+    description: "A juicy, flavorful chicken roasted with herbs, lemon, and vegetables all in one pot. Simple yet impressive!",
+    image: onePotMealImages[1],
+    rating: 4.9,
+    prepTime: 15,
+    cookTime: 75,
+    servings: 4,
+    chef: "Thomas Keller",
+    cuisine: "American",
+    category: "One Pot Meals",
+    difficulty: "Medium",
+    tags: ["one pot meals", "chicken", "roast", "sunday dinner", "family"]
+  },
+  {
+    id: "op3",
+    title: "Vegetable Biryani",
+    description: "Fragrant basmati rice layered with mixed vegetables, spices, and herbs, then slow-cooked to perfection in one pot.",
+    image: onePotMealImages[2],
+    rating: 4.8,
+    prepTime: 20,
+    cookTime: 45,
+    servings: 6,
+    chef: "Madhur Jaffrey",
+    cuisine: "Indian",
+    category: "One Pot Meals",
+    difficulty: "Medium",
+    tags: ["one pot meals", "rice", "vegetarian", "indian", "spicy"]
+  },
+  {
+    id: "op4",
+    title: "Instant Pot Beef Stew",
+    description: "Tender chunks of beef with potatoes, carrots, and peas in a rich gravy, made quickly in a pressure cooker.",
+    image: onePotMealImages[3],
+    rating: 4.7,
+    prepTime: 15,
+    cookTime: 35,
+    servings: 6,
+    chef: "Melissa Clark",
+    cuisine: "American",
+    category: "One Pot Meals",
+    difficulty: "Easy",
+    tags: ["one pot meals", "beef", "stew", "pressure cooker", "comfort food"]
+  },
+  {
+    id: "op5",
+    title: "Shakshuka",
+    description: "Eggs poached in a spiced tomato and pepper sauce, topped with feta and herbs. Perfect for breakfast, lunch, or dinner!",
+    image: onePotMealImages[4],
+    rating: 4.8,
+    prepTime: 10,
+    cookTime: 20,
+    servings: 4,
+    chef: "Yotam Ottolenghi",
+    cuisine: "Middle Eastern",
+    category: "One Pot Meals",
+    difficulty: "Easy",
+    tags: ["one pot meals", "eggs", "vegetarian", "middle eastern", "breakfast"]
+  },
+  {
+    id: "op6",
+    title: "Coconut Curry Lentil Soup",
+    description: "Creamy red lentils simmered with vegetables in a fragrant coconut curry broth. Vegan, protein-packed, and satisfying.",
+    image: onePotMealImages[5],
+    rating: 4.6,
+    prepTime: 15,
+    cookTime: 30,
+    servings: 6,
+    chef: "Angela Liddon",
+    cuisine: "Indian",
+    category: "One Pot Meals",
+    difficulty: "Easy",
+    tags: ["one pot meals", "soup", "lentil", "vegan", "curry"]
+  },
+  {
+    id: "op7",
+    title: "Spanish Seafood Paella",
+    description: "The iconic Spanish rice dish with saffron, shrimp, mussels, and chorizo, cooked in one large pan until the bottom develops a crispy 'socarrat'.",
+    image: onePotMealImages[6],
+    rating: 4.9,
+    prepTime: 20,
+    cookTime: 35,
+    servings: 6,
+    chef: "José Andrés",
+    cuisine: "Spanish",
+    category: "One Pot Meals",
+    difficulty: "Medium",
+    tags: ["one pot meals", "rice", "seafood", "spanish", "special occasion"]
+  },
+  {
+    id: "op8",
+    title: "Chicken and Dumplings",
+    description: "Tender chicken, vegetables, and fluffy dumplings in a rich, creamy broth. The ultimate American comfort food made in one pot.",
+    image: onePotMealImages[7],
+    rating: 4.8,
+    prepTime: 15,
+    cookTime: 45,
+    servings: 6,
+    chef: "Trisha Yearwood",
+    cuisine: "American",
+    category: "One Pot Meals",
+    difficulty: "Medium",
+    tags: ["one pot meals", "chicken", "comfort food", "southern", "family"]
+  }
+];
+
+export const soupStewRecipes = [
+  {
+    id: "ss1",
+    title: "Classic French Onion Soup",
+    description: "Caramelized onions in a rich beef broth, topped with a crusty baguette slice and melted Gruyère cheese.",
+    image: soupStewImages[0],
+    rating: 4.8,
+    prepTime: 15,
+    cookTime: 75,
+    servings: 6,
+    chef: "Julia Child",
+    cuisine: "French",
+    category: "Soups & Stews",
+    difficulty: "Medium",
+    tags: ["soups stews", "onion", "cheese", "french", "comfort food"]
+  },
+  {
+    id: "ss2",
+    title: "Hearty Beef and Barley Stew",
+    description: "Tender chunks of beef, pearl barley, and root vegetables slow-simmered to perfection. The ultimate winter comfort food.",
+    image: soupStewImages[1],
+    rating: 4.7,
+    prepTime: 20,
+    cookTime: 120,
+    servings: 8,
+    chef: "Ree Drummond",
+    cuisine: "American",
+    category: "Soups & Stews",
+    difficulty: "Medium",
+    tags: ["soups stews", "beef", "barley", "winter", "comfort food"]
+  },
+  {
+    id: "ss3",
+    title: "Tuscan White Bean and Kale Soup",
+    description: "A nutritious and flavorful soup featuring creamy cannellini beans, tender kale, and aromatic herbs in a tomato-based broth.",
+    image: soupStewImages[2],
+    rating: 4.6,
+    prepTime: 15,
+    cookTime: 30,
+    servings: 6,
+    chef: "Lidia Bastianich",
+    cuisine: "Italian",
+    category: "Soups & Stews",
+    difficulty: "Easy",
+    tags: ["soups stews", "beans", "vegetarian", "healthy", "italian"]
+  },
+  {
+    id: "ss4",
+    title: "Thai Coconut Chicken Soup (Tom Kha Gai)",
+    description: "A aromatic Thai soup with chicken, mushrooms, lemongrass, and galangal in a silky coconut milk broth.",
+    image: soupStewImages[3],
+    rating: 4.9,
+    prepTime: 20,
+    cookTime: 30,
+    servings: 4,
+    chef: "Andy Ricker",
+    cuisine: "Thai",
+    category: "Soups & Stews",
+    difficulty: "Medium",
+    tags: ["soups stews", "chicken", "coconut", "thai", "spicy"]
+  },
+  {
+    id: "ss5",
+    title: "New England Clam Chowder",
+    description: "A rich, creamy soup loaded with tender clams, potatoes, and bacon. A coastal classic served with oyster crackers.",
+    image: soupStewImages[4],
+    rating: 4.8,
+    prepTime: 20,
+    cookTime: 40,
+    servings: 6,
+    chef: "Jasper White",
+    cuisine: "American",
+    category: "Soups & Stews",
+    difficulty: "Medium",
+    tags: ["soups stews", "seafood", "creamy", "new england", "comfort food"]
+  },
+  {
+    id: "ss6",
+    title: "Moroccan Lentil Stew",
+    description: "A fragrant stew featuring lentils, chickpeas, tomatoes, and a blend of warm spices. Served with a dollop of yogurt and fresh herbs.",
+    image: soupStewImages[5],
+    rating: 4.7,
+    prepTime: 15,
+    cookTime: 45,
+    servings: 6,
+    chef: "Mourad Lahlou",
+    cuisine: "Moroccan",
+    category: "Soups & Stews",
+    difficulty: "Easy",
+    tags: ["soups stews", "lentil", "vegetarian", "moroccan", "spices"]
+  },
+  {
+    id: "ss7",
+    title: "Roasted Butternut Squash Soup",
+    description: "Velvety smooth butternut squash soup with hints of maple and warming spices. Perfect for fall and winter gatherings.",
+    image: soupStewImages[6],
+    rating: 4.8,
+    prepTime: 15,
+    cookTime: 55,
+    servings: 6,
+    chef: "Ina Garten",
+    cuisine: "American",
+    category: "Soups & Stews",
+    difficulty: "Easy",
+    tags: ["soups stews", "vegetarian", "squash", "fall", "creamy"]
+  },
+  {
+    id: "ss8",
+    title: "Hungarian Goulash",
+    description: "A rich beef stew seasoned with paprika, caraway seeds, and bell peppers. Served with sour cream and egg noodles.",
+    image: soupStewImages[7],
+    rating: 4.7,
+    prepTime: 20,
+    cookTime: 150,
+    servings: 8,
+    chef: "Rick Stein",
+    cuisine: "Hungarian",
+    category: "Soups & Stews",
+    difficulty: "Medium",
+    tags: ["soups stews", "beef", "paprika", "hungarian", "comfort food"]
+  }
+];
+
+export const allRecipes = [
+  ...southIndianRecipes,
+  ...bakingRecipes,
+  ...quickDinnerRecipes,
+  ...beverageRecipes,
+  ...onePotMealRecipes,
+  ...soupStewRecipes
+];
+
 export const categories = [
   { icon: "🥗", title: "Vegetarian", slug: "vegetarian" },
   { icon: "🍲", title: "Soups & Stews", slug: "soups-stews" },
@@ -419,11 +1103,11 @@ export const trendingIngredients = {
 };
 
 export const getAllRecipes = () => {
-  return [...southIndianRecipes];
+  return allRecipes;
 };
 
 export const getRecipeById = (id: string) => {
-  return southIndianRecipes.find(recipe => recipe.id === id);
+  return allRecipes.find(recipe => recipe.id === id);
 };
 
 export const getRecipesByCategory = (category: string) => {
@@ -440,7 +1124,7 @@ export const getRecipesByCategory = (category: string) => {
   
   const mappedCategory = categoryMap[category] || category;
   
-  return southIndianRecipes.filter(recipe => 
+  return allRecipes.filter(recipe => 
     recipe.category === mappedCategory || recipe.cuisine === mappedCategory || 
     recipe.tags?.includes(category.toLowerCase().replace('-', ' '))
   );
@@ -448,7 +1132,7 @@ export const getRecipesByCategory = (category: string) => {
 
 export const searchRecipes = (query: string) => {
   const lowerCaseQuery = query.toLowerCase();
-  return southIndianRecipes.filter(recipe => 
+  return allRecipes.filter(recipe => 
     recipe.title.toLowerCase().includes(lowerCaseQuery) || 
     recipe.description?.toLowerCase().includes(lowerCaseQuery) ||
     recipe.cuisine?.toLowerCase().includes(lowerCaseQuery) ||
