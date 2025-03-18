@@ -24,8 +24,8 @@ export interface Recipe {
   cuisine: string | null;
   category: string | null;
   difficulty: string | null;
-  ingredients: any[];
-  instructions: string[];
+  ingredients: any; // Changed from any[] to any to support JSON from Supabase
+  instructions: any; // Changed from string[] to any to support JSON from Supabase
   tags: string[];
   created_at: string;
   updated_at: string;

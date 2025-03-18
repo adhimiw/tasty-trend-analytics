@@ -63,7 +63,17 @@ const Profile = () => {
       
       if (error) throw error;
       
-      setUserRecipes(data || []);
+      // Convert the data to match Recipe type
+      const typedData = data?.map(recipe => ({
+        ...recipe,
+        prep_time: recipe.prep_time,
+        cook_time: recipe.cook_time,
+        ingredients: recipe.ingredients || [],
+        instructions: recipe.instructions || [],
+        tags: recipe.tags || []
+      })) as Recipe[];
+      
+      setUserRecipes(typedData || []);
     } catch (error) {
       console.error("Error fetching user recipes:", error);
       toast.error("Failed to load your recipes");
@@ -96,7 +106,17 @@ const Profile = () => {
         
         if (recipesError) throw recipesError;
         
-        setSavedRecipes(recipesData || []);
+        // Convert the data to match Recipe type
+        const typedData = recipesData?.map(recipe => ({
+          ...recipe,
+          prep_time: recipe.prep_time,
+          cook_time: recipe.cook_time,
+          ingredients: recipe.ingredients || [],
+          instructions: recipe.instructions || [],
+          tags: recipe.tags || []
+        })) as Recipe[];
+        
+        setSavedRecipes(typedData || []);
       } else {
         setSavedRecipes([]);
       }
