@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Search, User, Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Search, User, Menu, X, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,12 +9,18 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const NavigationBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, profile, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +34,17 @@ const NavigationBar = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      toast.success("Signed out successfully");
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast.error("Failed to sign out");
+    }
+  };
 
   return (
     <header
@@ -92,21 +109,56 @@ const NavigationBar = () => {
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="User menu">
-                <User className="h-5 w-5" />
-              </Button>
+              {user && profile ? (
+                <Button variant="ghost" size="icon" className="rounded-full" aria-label="User menu">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
+                    <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
+                  </Avatar>
+                </Button>
+              ) : (
+                <Button variant="ghost" size="icon" aria-label="User menu">
+                  <User className="h-5 w-5" />
+                </Button>
+              )}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuItem asChild>
-                <Link to="/login" className="w-full cursor-pointer">
-                  Sign In
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/profile" className="w-full cursor-pointer">
-                  My Profile
-                </Link>
-              </DropdownMenuItem>
+              {user && profile ? (
+                <>
+                  <div className="flex items-center gap-2 p-2">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
+                      <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium">{profile.display_name || profile.username}</span>
+                      <span className="text-xs text-muted-foreground">@{profile.username}</span>
+                    </div>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="w-full cursor-pointer">
+                      My Profile
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive focus:text-destructive">
+                    Sign Out
+                  </DropdownMenuItem>
+                </>
+              ) : (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link to="/login" className="w-full cursor-pointer">
+                      Sign In
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/profile" className="w-full cursor-pointer">
+                      My Profile
+                    </Link>
+                  </DropdownMenuItem>
+                </>
+              )}
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -170,12 +222,36 @@ const NavigationBar = () => {
           </nav>
 
           <div className="flex flex-col space-y-4 mt-auto">
-            <Button variant="default" asChild className="w-full">
-              <Link to="/login">Sign In</Link>
-            </Button>
-            <Button variant="outline" asChild className="w-full">
-              <Link to="/profile">My Profile</Link>
-            </Button>
+            {user && profile ? (
+              <>
+                <div className="flex items-center gap-3 p-2 border border-border rounded-lg">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
+                    <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
+                  </Avatar>
+                  <div className="flex flex-col">
+                    <span className="font-medium">{profile.display_name || profile.username}</span>
+                    <span className="text-sm text-muted-foreground">@{profile.username}</span>
+                  </div>
+                </div>
+                <Button variant="default" asChild className="w-full">
+                  <Link to="/profile">My Profile</Link>
+                </Button>
+                <Button variant="outline" className="w-full flex items-center justify-center" onClick={handleSignOut}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button variant="default" asChild className="w-full">
+                  <Link to="/login">Sign In</Link>
+                </Button>
+                <Button variant="outline" asChild className="w-full">
+                  <Link to="/profile">My Profile</Link>
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -49,7 +49,7 @@ const Profile = () => {
     
     fetchUserRecipes();
     fetchSavedRecipes();
-  }, [user]);
+  }, [user, navigate]);
   
   const fetchUserRecipes = async () => {
     if (!user) return;
@@ -66,8 +66,9 @@ const Profile = () => {
       // Convert the data to match Recipe type
       const typedData = data?.map(recipe => ({
         ...recipe,
-        prep_time: recipe.prep_time,
-        cook_time: recipe.cook_time,
+        prep_time: recipe.prep_time || 0,
+        cook_time: recipe.cook_time || 0,
+        servings: recipe.servings || 0,
         ingredients: recipe.ingredients || [],
         instructions: recipe.instructions || [],
         tags: recipe.tags || []
@@ -109,8 +110,9 @@ const Profile = () => {
         // Convert the data to match Recipe type
         const typedData = recipesData?.map(recipe => ({
           ...recipe,
-          prep_time: recipe.prep_time,
-          cook_time: recipe.cook_time,
+          prep_time: recipe.prep_time || 0,
+          cook_time: recipe.cook_time || 0,
+          servings: recipe.servings || 0,
           ingredients: recipe.ingredients || [],
           instructions: recipe.instructions || [],
           tags: recipe.tags || []
@@ -129,8 +131,14 @@ const Profile = () => {
   };
   
   const handleLogout = async () => {
-    await signOut();
-    navigate("/");
+    try {
+      await signOut();
+      toast.success("Signed out successfully");
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast.error("Failed to sign out");
+    }
   };
   
   const handleProfileUpdated = () => {

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { 
@@ -41,6 +40,8 @@ import {
 } from "@/components/ui/tooltip";
 import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
 interface Ingredient {
@@ -58,6 +59,7 @@ interface Instruction {
 
 const SubmitRecipe = () => {
   const navigate = useNavigate();
+  const { user, profile } = useAuth();
   const [currentStep, setCurrentStep] = useState(1);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -161,15 +163,74 @@ const SubmitRecipe = () => {
     setCurrentStep(current => Math.max(current - 1, 1));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!user) {
+      toast.error("You must be logged in to submit a recipe");
+      navigate("/login");
+      return;
+    }
+    
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Format ingredients and instructions for storage
+      const formattedIngredients = ingredients
+        .filter(ing => ing.name.trim() && ing.quantity.trim())
+        .map(ing => ({
+          name: ing.name.trim(),
+          quantity: ing.quantity.trim(),
+          unit: ing.unit.trim()
+        }));
+      
+      const formattedInstructions = instructions
+        .filter(inst => inst.text.trim())
+        .map((inst, index) => ({
+          step: index + 1,
+          text: inst.text.trim(),
+          image: inst.image
+        }));
+      
+      // Prepare tags
+      const tags = [
+        category.replace('_', ' '),
+        cuisine.replace('_', ' '),
+        isVegetarian ? 'vegetarian' : 'non-vegetarian',
+        difficulty.toLowerCase()
+      ].filter(Boolean);
+      
+      // Insert recipe into database
+      const { data, error } = await supabase
+        .from('recipes')
+        .insert({
+          user_id: user.id,
+          title: title.trim(),
+          description: description.trim(),
+          image: imagePreview,
+          prep_time: prepTime,
+          cook_time: cookTime,
+          servings: servings,
+          chef: profile?.display_name || profile?.username,
+          cuisine: cuisine,
+          category: category,
+          difficulty: difficulty,
+          ingredients: formattedIngredients,
+          instructions: formattedInstructions,
+          tags: tags,
+          rating: 0 // Default rating for new recipes
+        })
+        .select()
+        .single();
+      
+      if (error) throw error;
+      
       toast.success("Recipe submitted successfully!");
+      navigate(`/recipe/${data.id}`);
+    } catch (error) {
+      console.error("Error submitting recipe:", error);
+      toast.error("Failed to submit recipe. Please try again.");
+    } finally {
       setLoading(false);
-      navigate("/browse");
-    }, 1500);
+    }
   };
 
   const renderStepContent = () => {
