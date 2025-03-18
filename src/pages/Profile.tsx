@@ -1,6 +1,6 @@
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   User, 
   Settings, 
@@ -10,7 +10,8 @@ import {
   Heart, 
   ChevronRight,
   BarChart,
-  Edit3
+  Edit3,
+  LogOut
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -21,36 +22,126 @@ import {
   CardFooter, 
   CardHeader
 } from "@/components/ui/card";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
 import RecipeCard from "@/components/RecipeCard";
-import { southIndianRecipes } from "@/lib/mockData";
+import EditProfileDialog from "@/components/EditProfileDialog";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { Recipe } from "@/types/database";
+import { toast } from "sonner";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("my-recipes");
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
+  const [userRecipes, setUserRecipes] = useState<Recipe[]>([]);
+  const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { user, profile, signOut, refreshProfile } = useAuth();
+  const navigate = useNavigate();
   
-  // Mock user data
-  const user = {
-    name: "Jamie Oliver",
-    username: "jamie.oliver",
-    email: "jamie@example.com",
-    profileImage: "https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?q=80&w=2787&auto=format&fit=crop",
-    memberSince: "January 2023",
-    bio: "Home cook and food enthusiast. I love experimenting with South Indian cuisine and sharing my creations!"
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+    
+    fetchUserRecipes();
+    fetchSavedRecipes();
+  }, [user]);
+  
+  const fetchUserRecipes = async () => {
+    if (!user) return;
+    
+    try {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('recipes')
+        .select('*')
+        .eq('user_id', user.id);
+      
+      if (error) throw error;
+      
+      setUserRecipes(data || []);
+    } catch (error) {
+      console.error("Error fetching user recipes:", error);
+      toast.error("Failed to load your recipes");
+    } finally {
+      setLoading(false);
+    }
   };
   
-  // Mock user stats
+  const fetchSavedRecipes = async () => {
+    if (!user) return;
+    
+    try {
+      setLoading(true);
+      // Get saved recipe IDs
+      const { data: savedData, error: savedError } = await supabase
+        .from('saved_recipes')
+        .select('recipe_id')
+        .eq('user_id', user.id);
+      
+      if (savedError) throw savedError;
+      
+      if (savedData && savedData.length > 0) {
+        // Get recipe details for saved recipes
+        const recipeIds = savedData.map(item => item.recipe_id);
+        
+        const { data: recipesData, error: recipesError } = await supabase
+          .from('recipes')
+          .select('*')
+          .in('id', recipeIds);
+        
+        if (recipesError) throw recipesError;
+        
+        setSavedRecipes(recipesData || []);
+      } else {
+        setSavedRecipes([]);
+      }
+    } catch (error) {
+      console.error("Error fetching saved recipes:", error);
+      toast.error("Failed to load your saved recipes");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/");
+  };
+  
+  const handleProfileUpdated = () => {
+    refreshProfile();
+    toast.success("Profile updated successfully!");
+  };
+  
+  // Mock stats for now - could be calculated from real data later
   const stats = [
-    { label: "Recipes", value: 12, icon: BookOpen },
-    { label: "Favorites", value: 24, icon: Heart },
-    { label: "Following", value: 36, icon: User },
+    { label: "Recipes", value: userRecipes.length, icon: BookOpen },
+    { label: "Favorites", value: savedRecipes.length, icon: Heart },
+    { label: "Following", value: 0, icon: User },
   ];
   
-  // Mock user's recipes
-  const userRecipes = southIndianRecipes.slice(0, 6);
-  
-  // Mock saved recipes
-  const savedRecipes = southIndianRecipes.slice(6);
+  if (!user || !profile) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <NavigationBar />
+        <div className="flex-1 pt-20 pb-16 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold mb-4">Please Sign In</h1>
+            <p className="mb-6">You need to be signed in to view your profile.</p>
+            <Button asChild>
+              <Link to="/login">Sign In</Link>
+            </Button>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -62,14 +153,14 @@ const Profile = () => {
           <div className="mb-10 animate-fade-in">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
               <Avatar className="w-24 h-24 border-4 border-background shadow-md">
-                <AvatarImage src={user.profileImage} alt={user.name} />
-                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={profile.profile_image || undefined} alt={profile.display_name || profile.username} />
+                <AvatarFallback>{profile.display_name?.[0] || profile.username?.[0] || 'U'}</AvatarFallback>
               </Avatar>
               
               <div className="flex-1">
-                <h1 className="font-serif text-3xl font-bold mb-1">{user.name}</h1>
-                <p className="text-muted-foreground mb-3">@{user.username}</p>
-                <p className="mb-4 max-w-xl">{user.bio}</p>
+                <h1 className="font-serif text-3xl font-bold mb-1">{profile.display_name || profile.username}</h1>
+                <p className="text-muted-foreground mb-3">@{profile.username}</p>
+                <p className="mb-4 max-w-xl">{profile.bio || "No bio yet"}</p>
                 
                 <div className="flex flex-wrap gap-6">
                   {stats.map((stat, index) => (
@@ -91,11 +182,11 @@ const Profile = () => {
               </div>
               
               <div className="flex gap-2">
-                <Button variant="outline" className="flex items-center">
-                  <Settings className="h-4 w-4 mr-2" />
-                  Settings
+                <Button variant="outline" className="flex items-center" onClick={handleLogout}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Sign Out
                 </Button>
-                <Button className="flex items-center">
+                <Button className="flex items-center" onClick={() => setIsEditProfileOpen(true)}>
                   <Edit3 className="h-4 w-4 mr-2" />
                   Edit Profile
                 </Button>
@@ -122,20 +213,24 @@ const Profile = () => {
                 </Button>
               </div>
               
-              {userRecipes.length > 0 ? (
+              {loading ? (
+                <div className="text-center py-12">
+                  <p>Loading your recipes...</p>
+                </div>
+              ) : userRecipes.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {userRecipes.map((recipe, index) => (
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
                       title={recipe.title}
-                      image={recipe.image}
-                      rating={recipe.rating}
-                      prepTime={recipe.prepTime}
-                      cookTime={recipe.cookTime}
-                      servings={recipe.servings}
-                      chef={recipe.chef}
-                      category={recipe.category}
+                      image={recipe.image || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop"}
+                      rating={recipe.rating || 0}
+                      prepTime={recipe.prep_time || 0}
+                      cookTime={recipe.cook_time || 0}
+                      servings={recipe.servings || 0}
+                      chef={recipe.chef || profile.display_name || profile.username}
+                      category={recipe.category || ""}
                       className="animate-fade-in"
                       style={{ animationDelay: `${index % 6 * 100}ms` }}
                     />
@@ -166,20 +261,24 @@ const Profile = () => {
                 </Button>
               </div>
               
-              {savedRecipes.length > 0 ? (
+              {loading ? (
+                <div className="text-center py-12">
+                  <p>Loading your saved recipes...</p>
+                </div>
+              ) : savedRecipes.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {savedRecipes.map((recipe, index) => (
                     <RecipeCard
                       key={recipe.id}
                       id={recipe.id}
                       title={recipe.title}
-                      image={recipe.image}
-                      rating={recipe.rating}
-                      prepTime={recipe.prepTime}
-                      cookTime={recipe.cookTime}
-                      servings={recipe.servings}
-                      chef={recipe.chef}
-                      category={recipe.category}
+                      image={recipe.image || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop"}
+                      rating={recipe.rating || 0}
+                      prepTime={recipe.prep_time || 0}
+                      cookTime={recipe.cook_time || 0}
+                      servings={recipe.servings || 0}
+                      chef={recipe.chef || ""}
+                      category={recipe.category || ""}
                       className="animate-fade-in"
                       style={{ animationDelay: `${index % 6 * 100}ms` }}
                     />
@@ -203,38 +302,21 @@ const Profile = () => {
               <div className="mb-8">
                 <h2 className="font-serif text-2xl font-semibold mb-6">Recent Activity</h2>
                 
+                <Alert className="mb-6">
+                  <AlertDescription>
+                    We're tracking your activity to provide you with a personalized experience.
+                    Soon you'll see your recent interactions with recipes here.
+                  </AlertDescription>
+                </Alert>
+                
+                {/* Placeholder activity items */}
                 <div className="space-y-4">
                   <Card>
                     <CardHeader className="p-4 flex flex-row items-center space-y-0">
-                      <Star className="h-4 w-4 text-amber-500 mr-2" />
-                      <span className="font-medium">You rated a recipe</span>
-                      <span className="text-muted-foreground text-sm ml-auto">2 days ago</span>
+                      <User className="h-4 w-4 text-primary mr-2" />
+                      <span className="font-medium">You created your account</span>
+                      <span className="text-muted-foreground text-sm ml-auto">recently</span>
                     </CardHeader>
-                    <CardContent className="p-4 pt-0">
-                      <p>You gave <Link to="/recipe/1" className="font-medium hover:text-primary transition-colors">Masala Dosa with Coconut Chutney</Link> a 5-star rating.</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardHeader className="p-4 flex flex-row items-center space-y-0">
-                      <BookOpen className="h-4 w-4 text-primary mr-2" />
-                      <span className="font-medium">You submitted a recipe</span>
-                      <span className="text-muted-foreground text-sm ml-auto">5 days ago</span>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-0">
-                      <p>Your recipe <Link to="/recipe/5" className="font-medium hover:text-primary transition-colors">Lemon Rice (Chitranna)</Link> was approved and published.</p>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardHeader className="p-4 flex flex-row items-center space-y-0">
-                      <Heart className="h-4 w-4 text-accent mr-2" />
-                      <span className="font-medium">You saved a recipe</span>
-                      <span className="text-muted-foreground text-sm ml-auto">1 week ago</span>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-0">
-                      <p>You saved <Link to="/recipe/2" className="font-medium hover:text-primary transition-colors">Chettinad Chicken Curry</Link> to your favorites.</p>
-                    </CardContent>
                   </Card>
                 </div>
               </div>
@@ -247,13 +329,29 @@ const Profile = () => {
                     <CardContent className="p-6">
                       <div className="flex items-center space-x-4">
                         <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <BarChart className="h-6 w-6 text-primary" />
+                          <BookOpen className="h-6 w-6 text-primary" />
                         </div>
                         <div>
                           <div className="text-sm text-muted-foreground mb-1">
-                            Most Cooked Cuisine
+                            Total Recipes
                           </div>
-                          <div className="text-xl font-semibold">South Indian</div>
+                          <div className="text-xl font-semibold">{userRecipes.length}</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                  
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Heart className="h-6 w-6 text-primary" />
+                        </div>
+                        <div>
+                          <div className="text-sm text-muted-foreground mb-1">
+                            Saved Recipes
+                          </div>
+                          <div className="text-xl font-semibold">{savedRecipes.length}</div>
                         </div>
                       </div>
                     </CardContent>
@@ -267,25 +365,13 @@ const Profile = () => {
                         </div>
                         <div>
                           <div className="text-sm text-muted-foreground mb-1">
-                            Average Recipe Rating
+                            Average Rating
                           </div>
-                          <div className="text-xl font-semibold">4.6 / 5</div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center space-x-4">
-                        <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Clock className="h-6 w-6 text-primary" />
-                        </div>
-                        <div>
-                          <div className="text-sm text-muted-foreground mb-1">
-                            Total Cooking Time
+                          <div className="text-xl font-semibold">
+                            {userRecipes.length > 0 
+                              ? (userRecipes.reduce((sum, recipe) => sum + (recipe.rating || 0), 0) / userRecipes.length).toFixed(1) 
+                              : "N/A"}
                           </div>
-                          <div className="text-xl font-semibold">32 hours</div>
                         </div>
                       </div>
                     </CardContent>
@@ -296,6 +382,13 @@ const Profile = () => {
           </Tabs>
         </div>
       </div>
+
+      <EditProfileDialog 
+        open={isEditProfileOpen} 
+        onOpenChange={setIsEditProfileOpen}
+        profile={profile}
+        onProfileUpdated={handleProfileUpdated}
+      />
 
       <Footer />
     </div>

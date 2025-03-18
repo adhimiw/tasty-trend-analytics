@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -19,31 +20,37 @@ const Login = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { signIn, signUp } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      await signIn(loginEmail, loginPassword);
       toast.success("Logged in successfully!");
+      navigate("/profile");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to log in");
+    } finally {
       setLoading(false);
-      // In a real app, you'd redirect or update auth state here
-      window.location.href = "/profile";
-    }, 1500);
+    }
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      toast.success("Account created successfully!");
+    try {
+      await signUp(registerEmail, registerPassword, registerName);
+      toast.success("Account created successfully! Please check your email to confirm your account.");
+      navigate("/profile");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to create account");
+    } finally {
       setLoading(false);
-      // In a real app, you'd redirect or update auth state here
-      window.location.href = "/profile";
-    }, 1500);
+    }
   };
 
   return (
