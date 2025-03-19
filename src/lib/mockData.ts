@@ -436,9 +436,96 @@ export const southIndianRecipes = [
   }
 ];
 
-// Add export statements for other recipe collections here if they exist
-// Example: export const bakingRecipes = [...];
-// Example: export const quickDinnerRecipes = [...];
-// Example: export const beverageRecipes = [...];
-// Example: export const onePotMealRecipes = [...];
-// Example: export const soupStewRecipes = [...];
+// Define the recipe categories
+export const categories = [
+  { title: "South Indian", slug: "south-indian", icon: "🍛" },
+  { title: "Baking", slug: "baking", icon: "🍞" },
+  { title: "Quick Dinners", slug: "quick-dinners", icon: "⏱️" },
+  { title: "Beverages", slug: "beverages", icon: "🍹" },
+  { title: "One-Pot Meals", slug: "one-pot-meals", icon: "🍲" },
+  { title: "Soups & Stews", slug: "soups-stews", icon: "🥣" },
+  { title: "Vegetarian", slug: "vegetarian", icon: "🥗" },
+  { title: "Desserts", slug: "desserts", icon: "🍰" }
+];
+
+// Define the trending ingredients by season
+export const trendingIngredients = {
+  spring: [
+    { name: "Spinach", image: ingredientImages[9], percentageChange: 45 },
+    { name: "Fresh Herbs", image: ingredientImages[1], percentageChange: 38 },
+    { name: "Green Peas", image: ingredientImages[6], percentageChange: 32 },
+    { name: "Asparagus", image: ingredientImages[7], percentageChange: 28 }
+  ],
+  summer: [
+    { name: "Coconut", image: ingredientImages[0], percentageChange: 52 },
+    { name: "Tomatoes", image: ingredientImages[5], percentageChange: 40 },
+    { name: "Bell Peppers", image: ingredientImages[6], percentageChange: 35 },
+    { name: "Avocado", image: ingredientImages[8], percentageChange: 30 }
+  ],
+  autumn: [
+    { name: "Turmeric", image: ingredientImages[2], percentageChange: 48 },
+    { name: "Lentils", image: ingredientImages[3], percentageChange: 42 },
+    { name: "Mushrooms", image: ingredientImages[7], percentageChange: 36 },
+    { name: "Rice", image: ingredientImages[4], percentageChange: 25 }
+  ],
+  winter: [
+    { name: "Rice", image: ingredientImages[4], percentageChange: 38 },
+    { name: "Lentils", image: ingredientImages[3], percentageChange: 35 },
+    { name: "Curry Leaves", image: ingredientImages[1], percentageChange: 30 },
+    { name: "Coconut", image: ingredientImages[0], percentageChange: 22 }
+  ]
+};
+
+// Currently we just have southIndianRecipes, but we'll be adding more recipe collections
+const allRecipes = [...southIndianRecipes];
+
+// Helper function to get all recipes
+export const getAllRecipes = () => {
+  return allRecipes;
+};
+
+// Helper function to get a recipe by its ID
+export const getRecipeById = (id: string) => {
+  return allRecipes.find(recipe => recipe.id === id);
+};
+
+// Helper function to get recipes by category
+export const getRecipesByCategory = (category: string) => {
+  const normalizedCategory = category.toLowerCase().replace(/\s+/g, '-');
+  return allRecipes.filter(recipe => {
+    // Check in category field
+    if (recipe.category && recipe.category.toLowerCase().replace(/\s+/g, '-') === normalizedCategory) {
+      return true;
+    }
+    // Check in tags
+    if (recipe.tags && recipe.tags.some(tag => tag.toLowerCase().replace(/\s+/g, '-') === normalizedCategory)) {
+      return true;
+    }
+    return false;
+  });
+};
+
+// Helper function to search recipes
+export const searchRecipes = (query: string) => {
+  const normalizedQuery = query.toLowerCase().trim();
+  return allRecipes.filter(recipe => {
+    // Search in title
+    if (recipe.title.toLowerCase().includes(normalizedQuery)) {
+      return true;
+    }
+    // Search in description
+    if (recipe.description && recipe.description.toLowerCase().includes(normalizedQuery)) {
+      return true;
+    }
+    // Search in tags
+    if (recipe.tags && recipe.tags.some(tag => tag.toLowerCase().includes(normalizedQuery))) {
+      return true;
+    }
+    // Search in ingredients
+    if (recipe.ingredients && recipe.ingredients.some(ingredient => 
+      ingredient.name.toLowerCase().includes(normalizedQuery))) {
+      return true;
+    }
+    return false;
+  });
+};
