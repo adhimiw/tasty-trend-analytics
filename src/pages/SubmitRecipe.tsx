@@ -133,7 +133,6 @@ const SubmitRecipe = () => {
   };
 
   const nextStep = () => {
-    // Basic validation
     if (currentStep === 1) {
       if (!title.trim() || !description.trim() || !cuisine || !category) {
         toast.error("Please fill in all required fields");
@@ -173,7 +172,6 @@ const SubmitRecipe = () => {
     setLoading(true);
     
     try {
-      // Format ingredients and instructions for storage
       const formattedIngredients = ingredients
         .filter(ing => ing.name.trim() && ing.quantity.trim())
         .map(ing => ({
@@ -190,7 +188,6 @@ const SubmitRecipe = () => {
           image: inst.image
         }));
       
-      // Prepare tags
       const tags = [
         category.replace('_', ' '),
         cuisine.replace('_', ' '),
@@ -198,7 +195,6 @@ const SubmitRecipe = () => {
         difficulty.toLowerCase()
       ].filter(Boolean);
       
-      // Insert recipe into database
       const { data, error } = await supabase
         .from('recipes')
         .insert({

@@ -10,6 +10,18 @@ export interface Profile {
   updated_at: string;
 }
 
+export interface Instruction {
+  step: number;
+  text: string;
+  image?: string | null;
+}
+
+export interface Ingredient {
+  name: string;
+  quantity: string;
+  unit: string;
+}
+
 export interface Recipe {
   id: string;
   user_id: string;
@@ -24,8 +36,8 @@ export interface Recipe {
   cuisine: string | null;
   category: string | null;
   difficulty: string | null;
-  ingredients: any; // Changed from any[] to any to support JSON from Supabase
-  instructions: any; // Changed from string[] to any to support JSON from Supabase
+  ingredients: Ingredient[] | null;
+  instructions: Instruction[] | null;
   tags: string[];
   created_at: string;
   updated_at: string;

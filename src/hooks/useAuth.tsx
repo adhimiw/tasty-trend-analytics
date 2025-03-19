@@ -49,15 +49,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
         console.log("Auth state changed:", event, session?.user?.id);
-        setUser(session?.user || null);
         
-        if (session?.user) {
+        // Special handling for SIGNED_IN event to ensure we wait for profile data
+        if (event === 'SIGNED_IN' && session?.user) {
+          setUser(session.user);
           await fetchProfile(session.user.id);
-        } else {
+          setLoading(false);
+        } else if (event === 'SIGNED_OUT') {
+          setUser(null);
           setProfile(null);
+          setLoading(false);
+        } else {
+          setUser(session?.user || null);
+          
+          if (session?.user) {
+            await fetchProfile(session.user.id);
+          } else {
+            setProfile(null);
+          }
+          
+          setLoading(false);
         }
-
-        setLoading(false);
       }
     );
 
@@ -75,13 +87,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         .eq('id', userId)
         .maybeSingle();
       
-      if (error) throw error;
+      if (error) {
+        console.error("Error fetching profile:", error);
+        throw error;
+      }
       
       console.log("Profile data:", data);
       setProfile(data);
+      return data;
     } catch (error) {
       console.error("Error fetching profile:", error);
       setProfile(null);
+      return null;
     }
   };
 
@@ -100,12 +117,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         password,
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error("Auth error:", error);
+        toast.error(error.message || "Failed to sign in");
+        throw error;
+      }
       
       console.log("Sign in successful:", data.user?.id);
       
-      // Only show success toast if we have a user
+      // Fetch profile data right after successful sign in
       if (data.user) {
+        await fetchProfile(data.user.id);
         toast.success("Signed in successfully!");
       }
       
@@ -133,7 +155,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error("Auth error:", error);
+        toast.error(error.message || "Failed to create account");
+        throw error;
+      }
       
       console.log("Sign up successful:", data);
       
@@ -155,7 +181,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       setLoading(true);
       const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+      if (error) {
+        console.error("Auth error:", error);
+        toast.error(error.message || "Failed to sign out");
+        throw error;
+      }
       
       // Clear local state
       setUser(null);
