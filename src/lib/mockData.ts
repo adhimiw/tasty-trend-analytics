@@ -403,3 +403,4 @@ export const southIndianRecipes = [
     category: "Breakfast",
     difficulty: "Medium",
     tags: ["south indian", "kerala", "breakfast", "coconut", "fermented"],
+    instructions: [
