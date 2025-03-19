@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,37 +19,63 @@ const Login = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, user } = useAuth();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    
+    if (!loginEmail || !loginPassword) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
+    setIsSubmitting(true);
     
     try {
       await signIn(loginEmail, loginPassword);
       toast.success("Logged in successfully!");
       navigate("/profile");
     } catch (error: any) {
-      toast.error(error.message || "Failed to log in");
+      console.error("Login error:", error);
+      // Error is already shown in the signIn function
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    
+    if (!registerName || !registerEmail || !registerPassword) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
+    if (registerPassword.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
+    }
+    
+    setIsSubmitting(true);
     
     try {
       await signUp(registerEmail, registerPassword, registerName);
-      toast.success("Account created successfully! Please check your email to confirm your account.");
-      navigate("/profile");
+      // We don't navigate here, as the user might need to verify their email
+      // Success message is already shown in the signUp function
     } catch (error: any) {
-      toast.error(error.message || "Failed to create account");
+      console.error("Register error:", error);
+      // Error is already shown in the signUp function
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -86,6 +112,7 @@ const Login = () => {
                       required
                       value={loginEmail}
                       onChange={(e) => setLoginEmail(e.target.value)}
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -106,6 +133,7 @@ const Login = () => {
                       required
                       value={loginPassword}
                       onChange={(e) => setLoginPassword(e.target.value)}
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -116,14 +144,15 @@ const Login = () => {
                       onCheckedChange={(checked) => 
                         setRememberMe(checked as boolean)
                       }
+                      disabled={isSubmitting}
                     />
                     <Label htmlFor="remember" className="text-sm">
                       Remember me
                     </Label>
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Signing in..." : "Sign In"}
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Signing in..." : "Sign In"}
                   </Button>
                 </form>
 
@@ -140,10 +169,10 @@ const Login = () => {
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 mt-6">
-                    <Button variant="outline" type="button" className="w-full">
+                    <Button variant="outline" type="button" className="w-full" disabled={isSubmitting}>
                       Google
                     </Button>
-                    <Button variant="outline" type="button" className="w-full">
+                    <Button variant="outline" type="button" className="w-full" disabled={isSubmitting}>
                       Facebook
                     </Button>
                   </div>
@@ -161,6 +190,7 @@ const Login = () => {
                       required
                       value={registerName}
                       onChange={(e) => setRegisterName(e.target.value)}
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -173,6 +203,7 @@ const Login = () => {
                       required
                       value={registerEmail}
                       onChange={(e) => setRegisterEmail(e.target.value)}
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -185,14 +216,15 @@ const Login = () => {
                       required
                       value={registerPassword}
                       onChange={(e) => setRegisterPassword(e.target.value)}
+                      disabled={isSubmitting}
                     />
                     <p className="text-xs text-muted-foreground">
-                      Password must be at least 8 characters long
+                      Password must be at least 6 characters long
                     </p>
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <Checkbox id="terms" required />
+                    <Checkbox id="terms" required disabled={isSubmitting} />
                     <Label htmlFor="terms" className="text-sm">
                       I agree to the{" "}
                       <Link to="/terms" className="text-primary hover:underline">
@@ -205,8 +237,8 @@ const Login = () => {
                     </Label>
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Creating account..." : "Create Account"}
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? "Creating account..." : "Create Account"}
                   </Button>
                 </form>
               </TabsContent>
