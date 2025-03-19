@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -40,13 +41,21 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
+      // Call signIn and wait for the response
       const result = await signIn(loginEmail, loginPassword);
+      
+      // If we have a user, navigate to profile
       if (result?.user) {
+        console.log("Login successful, navigating to profile");
         navigate("/profile");
+      } else {
+        console.log("Login unsuccessful, no user returned");
+        // This should generally not happen as errors should be caught
+        toast.error("Something went wrong with login");
       }
     } catch (error: any) {
-      console.error("Login error:", error);
       // Error is already shown in the signIn function
+      console.error("Login error caught in component:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -68,11 +77,12 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
-      await signUp(registerEmail, registerPassword, registerName);
+      const result = await signUp(registerEmail, registerPassword, registerName);
+      console.log("Registration result:", result);
       // We don't navigate here, as the user might need to verify their email
     } catch (error: any) {
-      console.error("Register error:", error);
       // Error is already shown in the signUp function
+      console.error("Register error caught in component:", error);
     } finally {
       setIsSubmitting(false);
     }
