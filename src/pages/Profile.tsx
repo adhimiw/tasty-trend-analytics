@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
@@ -29,7 +28,7 @@ import RecipeCard from "@/components/RecipeCard";
 import EditProfileDialog from "@/components/EditProfileDialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { Recipe } from "@/types/database";
+import { Recipe, Ingredient, Instruction } from "@/types/database";
 import { toast } from "sonner";
 
 const Profile = () => {
@@ -51,6 +50,30 @@ const Profile = () => {
     fetchSavedRecipes();
   }, [user, navigate]);
   
+  const convertToRecipeType = (recipeData: any[]): Recipe[] => {
+    return recipeData.map(recipe => ({
+      ...recipe,
+      prep_time: recipe.prep_time || 0,
+      cook_time: recipe.cook_time || 0,
+      servings: recipe.servings || 0,
+      ingredients: Array.isArray(recipe.ingredients) 
+        ? recipe.ingredients.map((ing: any) => ({
+            name: ing.name || '',
+            quantity: ing.quantity || '',
+            unit: ing.unit || ''
+          }))
+        : [],
+      instructions: Array.isArray(recipe.instructions)
+        ? recipe.instructions.map((inst: any) => ({
+            step: inst.step || 0,
+            text: inst.text || '',
+            image: inst.image || null
+          }))
+        : [],
+      tags: recipe.tags || []
+    })) as Recipe[];
+  };
+  
   const fetchUserRecipes = async () => {
     if (!user) return;
     
@@ -63,18 +86,8 @@ const Profile = () => {
       
       if (error) throw error;
       
-      // Convert the data to match Recipe type
-      const typedData = data?.map(recipe => ({
-        ...recipe,
-        prep_time: recipe.prep_time || 0,
-        cook_time: recipe.cook_time || 0,
-        servings: recipe.servings || 0,
-        ingredients: recipe.ingredients || [],
-        instructions: recipe.instructions || [],
-        tags: recipe.tags || []
-      })) as Recipe[];
-      
-      setUserRecipes(typedData || []);
+      const typedData = convertToRecipeType(data || []);
+      setUserRecipes(typedData);
     } catch (error) {
       console.error("Error fetching user recipes:", error);
       toast.error("Failed to load your recipes");
@@ -88,7 +101,6 @@ const Profile = () => {
     
     try {
       setLoading(true);
-      // Get saved recipe IDs
       const { data: savedData, error: savedError } = await supabase
         .from('saved_recipes')
         .select('recipe_id')
@@ -97,7 +109,6 @@ const Profile = () => {
       if (savedError) throw savedError;
       
       if (savedData && savedData.length > 0) {
-        // Get recipe details for saved recipes
         const recipeIds = savedData.map(item => item.recipe_id);
         
         const { data: recipesData, error: recipesError } = await supabase
@@ -107,18 +118,8 @@ const Profile = () => {
         
         if (recipesError) throw recipesError;
         
-        // Convert the data to match Recipe type
-        const typedData = recipesData?.map(recipe => ({
-          ...recipe,
-          prep_time: recipe.prep_time || 0,
-          cook_time: recipe.cook_time || 0,
-          servings: recipe.servings || 0,
-          ingredients: recipe.ingredients || [],
-          instructions: recipe.instructions || [],
-          tags: recipe.tags || []
-        })) as Recipe[];
-        
-        setSavedRecipes(typedData || []);
+        const typedData = convertToRecipeType(recipesData || []);
+        setSavedRecipes(typedData);
       } else {
         setSavedRecipes([]);
       }
@@ -146,7 +147,6 @@ const Profile = () => {
     toast.success("Profile updated successfully!");
   };
   
-  // Mock stats for now - could be calculated from real data later
   const stats = [
     { label: "Recipes", value: userRecipes.length, icon: BookOpen },
     { label: "Favorites", value: savedRecipes.length, icon: Heart },
@@ -177,7 +177,6 @@ const Profile = () => {
 
       <div className="flex-1 pt-20 pb-16">
         <div className="container mx-auto px-4">
-          {/* Profile Header */}
           <div className="mb-10 animate-fade-in">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
               <Avatar className="w-24 h-24 border-4 border-background shadow-md">
@@ -222,7 +221,6 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Profile Content */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="animate-fade-in" style={{ animationDelay: '100ms' }}>
             <TabsList className="grid grid-cols-3 md:w-[400px] mb-8">
               <TabsTrigger value="my-recipes">My Recipes</TabsTrigger>
@@ -337,7 +335,6 @@ const Profile = () => {
                   </AlertDescription>
                 </Alert>
                 
-                {/* Placeholder activity items */}
                 <div className="space-y-4">
                   <Card>
                     <CardHeader className="p-4 flex flex-row items-center space-y-0">
