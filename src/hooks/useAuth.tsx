@@ -25,10 +25,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     // Check active session
     const getSession = async () => {
+      setLoading(true);
       try {
         const { data, error } = await supabase.auth.getSession();
         if (error) throw error;
         
+        console.log("Initial session check:", data.session?.user?.id || "No user");
         setUser(data.session?.user || null);
         
         if (data.session?.user) {
@@ -45,8 +47,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        console.log("Auth state changed:", _event, session?.user?.id);
+      async (event, session) => {
+        console.log("Auth state changed:", event, session?.user?.id);
         setUser(session?.user || null);
         
         if (session?.user) {
@@ -90,6 +92,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const signIn = async (email: string, password: string) => {
+    setLoading(true);
     try {
       console.log("Signing in with:", email);
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -111,10 +114,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Error signing in:", error);
       toast.error(error.message || "Failed to sign in");
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const signUp = async (email: string, password: string, name: string) => {
+    setLoading(true);
     try {
       console.log("Signing up with:", email, name);
       const { data, error } = await supabase.auth.signUp({
@@ -140,11 +146,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Error signing up:", error);
       toast.error(error.message || "Failed to create account");
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const signOut = async () => {
     try {
+      setLoading(true);
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
       
@@ -157,6 +166,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       console.error("Error signing out:", error);
       toast.error(error.message || "Failed to sign out");
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 

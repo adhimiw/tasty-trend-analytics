@@ -21,11 +21,12 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  const { signIn, signUp, user } = useAuth();
+  const { signIn, signUp, user, loading } = useAuth();
 
   // Redirect if already logged in
   useEffect(() => {
     if (user) {
+      console.log("User already logged in, redirecting to profile page");
       navigate("/profile");
     }
   }, [user, navigate]);
@@ -41,12 +42,14 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
-      // Call signIn and wait for the response
+      console.log("Starting login process...");
       const result = await signIn(loginEmail, loginPassword);
       
-      // If we have a user, navigate to profile
+      console.log("Login result:", result);
+      
       if (result?.user) {
-        console.log("Login successful, navigating to profile");
+        console.log("Login successful, user:", result.user.id);
+        console.log("Navigating to profile page");
         navigate("/profile");
       } else {
         console.log("Login unsuccessful, no user returned");
@@ -77,9 +80,14 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
+      console.log("Starting registration process...");
       const result = await signUp(registerEmail, registerPassword, registerName);
+      
       console.log("Registration result:", result);
       // We don't navigate here, as the user might need to verify their email
+      if (result?.user) {
+        toast.success("Registration successful! Please check your email for verification if required.");
+      }
     } catch (error: any) {
       // Error is already shown in the signUp function
       console.error("Register error caught in component:", error);
@@ -87,6 +95,10 @@ const Login = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (loading && user) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
