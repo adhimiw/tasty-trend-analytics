@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -41,9 +40,10 @@ const Login = () => {
     setIsSubmitting(true);
     
     try {
-      await signIn(loginEmail, loginPassword);
-      toast.success("Logged in successfully!");
-      navigate("/profile");
+      const result = await signIn(loginEmail, loginPassword);
+      if (result?.user) {
+        navigate("/profile");
+      }
     } catch (error: any) {
       console.error("Login error:", error);
       // Error is already shown in the signIn function
@@ -70,7 +70,6 @@ const Login = () => {
     try {
       await signUp(registerEmail, registerPassword, registerName);
       // We don't navigate here, as the user might need to verify their email
-      // Success message is already shown in the signUp function
     } catch (error: any) {
       console.error("Register error:", error);
       // Error is already shown in the signUp function
