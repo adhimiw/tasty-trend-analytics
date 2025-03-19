@@ -117,7 +117,7 @@ export const featuredRecipes = [
       "Grind them into a smooth batter and ferment overnight.",
       "For the potato filling, boil and mash potatoes.",
       "Temper mustard seeds, curry leaves, and spices in oil.",
-      "Add onions, ginger, and green chilies, sauté till golden.",
+      "Add onions, ginger, and green chilies, sauté till golden brown.",
       "Mix in mashed potatoes, turmeric, and salt. Cook for 5 minutes.",
       "Heat a griddle, pour a ladle of batter, and spread in a circular motion.",
       "Drizzle oil around the edges and cook until golden brown.",
@@ -404,3 +404,41 @@ export const southIndianRecipes = [
     difficulty: "Medium",
     tags: ["south indian", "kerala", "breakfast", "coconut", "fermented"],
     instructions: [
+      "Soak rice for 4-6 hours, then drain.",
+      "Grind rice with coconut, yeast, and sugar to make a smooth batter.",
+      "Add salt and let the batter ferment for 8 hours or overnight.",
+      "For the stew, heat oil and sauté onions, ginger, garlic, and green chilies.",
+      "Add vegetables or meat and cook until partially done.",
+      "Add coconut milk, spices, and salt. Simmer until fully cooked.",
+      "For appams, heat an appam pan, pour a ladle of batter, and swirl to coat.",
+      "Cover and cook until the edges are crisp and the center is soft.",
+      "Serve hot appams with the stew."
+    ],
+    ingredients: [
+      { name: "Rice", quantity: "2", unit: "cups" },
+      { name: "Fresh coconut", quantity: "1/2", unit: "cup" },
+      { name: "Yeast", quantity: "1/2", unit: "tsp" },
+      { name: "Sugar", quantity: "1", unit: "tsp" },
+      { name: "Salt", quantity: "", unit: "to taste" },
+      { name: "Mixed vegetables or meat", quantity: "2", unit: "cups" },
+      { name: "Onion", quantity: "1", unit: "medium" },
+      { name: "Ginger", quantity: "1", unit: "inch" },
+      { name: "Garlic", quantity: "3", unit: "cloves" },
+      { name: "Green chilies", quantity: "2", unit: "" },
+      { name: "Coconut milk", quantity: "2", unit: "cups" },
+      { name: "Cloves", quantity: "3", unit: "" },
+      { name: "Cinnamon", quantity: "1", unit: "small piece" },
+      { name: "Cardamom", quantity: "2", unit: "pods" },
+      { name: "Black pepper", quantity: "1/2", unit: "tsp" },
+      { name: "Curry leaves", quantity: "10", unit: "" },
+      { name: "Oil", quantity: "2", unit: "tbsp" }
+    ]
+  }
+];
+
+// Add export statements for other recipe collections here if they exist
+// Example: export const bakingRecipes = [...];
+// Example: export const quickDinnerRecipes = [...];
+// Example: export const beverageRecipes = [...];
+// Example: export const onePotMealRecipes = [...];
+// Example: export const soupStewRecipes = [...];
