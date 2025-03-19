@@ -40,9 +40,9 @@ const NavigationBar = () => {
       await signOut();
       toast.success("Signed out successfully");
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error signing out:", error);
-      toast.error("Failed to sign out");
+      toast.error("Failed to sign out: " + (error.message || "Unknown error"));
     }
   };
 
