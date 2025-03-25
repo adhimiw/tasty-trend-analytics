@@ -1,95 +1,62 @@
-// South Indian recipe images - replace with your own images in production
-const southIndianImages = [
-  "https://images.unsplash.com/photo-1589778655375-3e622a9fc8c8?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1630383249896-388b1f95ffde?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1596797038530-2c107aa4606c?q=80&w=2835&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1593761287596-5dc9c8b1d89a?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2371&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1631292784641-440255e0a21c?q=80&w=2480&auto=format&fit=crop"
-];
+// Local recipe images instead of external URLs
+// Import all local images
+import masalaDosaImg from '../assets/images/recipes/masala-dosa.jpg';
+import chettinadChickenImg from '../assets/images/recipes/chettinad-chicken.jpg';
+import vegetableBiryaniImg from '../assets/images/recipes/vegetable-biryani.jpg';
+import keralaFishCurryImg from '../assets/images/recipes/kerala-fish-curry.jpg';
+import lemonRiceImg from '../assets/images/recipes/lemon-rice.jpg';
+import mysorePakImg from '../assets/images/recipes/mysore-pak.jpg';
+import sambharImg from '../assets/images/recipes/sambhar.jpg';
+import appamStewImg from '../assets/images/recipes/appam-stew.jpg';
 
 // Baking images
-const bakingImages = [
-  "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1565599837634-134a554d20de?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=2689&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1614707267537-b85aaf00c4b7?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551404973-761c83957d5d?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2752&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=2787&auto=format&fit=crop"
-];
+import chocolateCakeImg from '../assets/images/recipes/chocolate-cake.jpg';
+import sourdoughBreadImg from '../assets/images/recipes/sourdough-bread.jpg';
+import cinnamonRollsImg from '../assets/images/recipes/cinnamon-rolls.jpg';
+import blueberryMuffinsImg from '../assets/images/recipes/blueberry-muffins.jpg';
 
 // Quick dinner images
-const quickDinnerImages = [
-  "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1604908176997-125f7c9c7e5b?q=80&w=2733&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1564834423906-8a3f66aa0bb8?q=80&w=2933&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1585672840563-f2af2ced55c9?q=80&w=2530&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=2935&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=2936&auto=format&fit=crop"
-];
+import pastaImg from '../assets/images/recipes/pasta.jpg';
+import stirFryImg from '../assets/images/recipes/stir-fry.jpg';
+import tacoSaladImg from '../assets/images/recipes/taco-salad.jpg';
+import quesadillaImg from '../assets/images/recipes/quesadilla.jpg';
 
 // Beverage images
-const beverageImages = [
-  "https://images.unsplash.com/photo-1556679343-c1306ee5277b?q=80&w=2864&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?q=80&w=2160&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1560508180-03f285f67ded?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1543363950-c78545037afc?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1605548109944-9040d0972bf3?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1532635241-17e6cc2da4c4?q=80&w=2830&auto=format&fit=crop"
-];
+import masalaChaiImg from '../assets/images/recipes/masala-chai.jpg';
+import mangoLassiImg from '../assets/images/recipes/mango-lassi.jpg';
+import mocktailImg from '../assets/images/recipes/mocktail.jpg';
+import smoothieImg from '../assets/images/recipes/smoothie.jpg';
 
 // One pot meal images
-const onePotMealImages = [
-  "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1551462147-ff29053bfc14?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2862&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1640719028782-8230f1bdc0c2?q=80&w=2730&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=2880&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1564671546498-09a366692274?q=80&w=2874&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?q=80&w=2574&auto=format&fit=crop"
-];
+import biryaniImg from '../assets/images/recipes/biryani.jpg';
+import paellaImg from '../assets/images/recipes/paella.jpg';
+import risottoImg from '../assets/images/recipes/risotto.jpg';
+import chiliImg from '../assets/images/recipes/chili.jpg';
 
-// Soup & Stew images
-const soupStewImages = [
-  "https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1605490596148-3178fa6d8e4e?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1583608564767-86cd2c805e5f?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1620791144170-8a443bf37a33?q=80&w=2864&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1621957773287-4fc7c7a41b05?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1614398751058-eb2e0bf63e53?q=80&w=2786&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1604152135912-04a022e23696?q=80&w=2787&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=2000&auto=format&fit=crop"
-];
+// Soup & Stew images 
+import tomatoSoupImg from '../assets/images/recipes/tomato-soup.jpg';
+import lentilSoupImg from '../assets/images/recipes/lentil-soup.jpg';
+import beefStewImg from '../assets/images/recipes/beef-stew.jpg';
+import minestroneSoupImg from '../assets/images/recipes/minestrone-soup.jpg';
 
 // Ingredient images
-const ingredientImages = [
-  "https://images.unsplash.com/photo-1550431221-6f3f7366a1b1?q=80&w=2787&auto=format&fit=crop", // Coconut
-  "https://images.unsplash.com/photo-1620574387735-3624d80181a7?q=80&w=2787&auto=format&fit=crop", // Curry leaves
-  "https://images.unsplash.com/photo-1606918566956-d9bb43e9fa4f?q=80&w=2787&auto=format&fit=crop", // Turmeric
-  "https://images.unsplash.com/photo-1590166774851-bc49b23a18fe?q=80&w=2789&auto=format&fit=crop", // Lentils
-  "https://images.unsplash.com/photo-1613743990305-736d763f3d70?q=80&w=2788&auto=format&fit=crop", // Rice
-  "https://images.unsplash.com/photo-1576044665177-44381586c678?q=80&w=2940&auto=format&fit=crop", // Tomatoes
-  "https://images.unsplash.com/photo-1614021073222-118d4cdc9c8a?q=80&w=2787&auto=format&fit=crop", // Bell peppers
-  "https://images.unsplash.com/photo-1615486826635-851566f902a0?q=80&w=2787&auto=format&fit=crop", // Mushrooms
-  "https://images.unsplash.com/photo-1603048588665-791ca8aea617?q=80&w=2940&auto=format&fit=crop", // Avocado
-  "https://images.unsplash.com/photo-1590868309235-ea34bed7bd7f?q=80&w=2940&auto=format&fit=crop", // Spinach
-];
+import coconutImg from '../assets/images/ingredients/coconut.jpg';
+import curryLeavesImg from '../assets/images/ingredients/curry-leaves.jpg';
+import turmericImg from '../assets/images/ingredients/turmeric.jpg';
+import lentilsImg from '../assets/images/ingredients/lentils.jpg';
+import riceImg from '../assets/images/ingredients/rice.jpg';
+import tomatoesImg from '../assets/images/ingredients/tomatoes.jpg';
+import bellPeppersImg from '../assets/images/ingredients/bell-peppers.jpg';
+import mushroomsImg from '../assets/images/ingredients/mushrooms.jpg';
+import avocadoImg from '../assets/images/ingredients/avocado.jpg';
+import spinachImg from '../assets/images/ingredients/spinach.jpg';
 
 export const featuredRecipes = [
   {
     id: "1",
     title: "Masala Dosa with Coconut Chutney",
     description: "A classic South Indian breakfast dish featuring crispy rice crepes filled with spiced potatoes, served with coconut chutney and sambar.",
-    image: southIndianImages[0],
+    image: masalaDosaImg,
     rating: 4.8,
     prepTime: 30,
     cookTime: 15,
@@ -113,15 +80,15 @@ export const featuredRecipes = [
       { name: "Salt", quantity: "", unit: "to taste" },
     ],
     instructions: [
-      "Soak rice and urad dal separately for 4-6 hours.",
-      "Grind them into a smooth batter and ferment overnight.",
-      "For the potato filling, boil and mash potatoes.",
-      "Temper mustard seeds, curry leaves, and spices in oil.",
-      "Add onions, ginger, and green chilies, sauté till golden brown.",
-      "Mix in mashed potatoes, turmeric, and salt. Cook for 5 minutes.",
-      "Heat a griddle, pour a ladle of batter, and spread in a circular motion.",
-      "Drizzle oil around the edges and cook until golden brown.",
-      "Place potato filling in the center, fold the dosa, and serve hot with coconut chutney and sambar."
+      { step: 1, text: "Soak rice and urad dal separately for 4-6 hours." },
+      { step: 2, text: "Grind them into a smooth batter and ferment overnight." },
+      { step: 3, text: "For the potato filling, boil and mash potatoes." },
+      { step: 4, text: "Temper mustard seeds, curry leaves, and spices in oil." },
+      { step: 5, text: "Add onions, ginger, and green chilies, sauté till golden brown." },
+      { step: 6, text: "Mix in mashed potatoes, turmeric, and salt. Cook for 5 minutes." },
+      { step: 7, text: "Heat a griddle, pour a ladle of batter, and spread in a circular motion." },
+      { step: 8, text: "Drizzle oil around the edges and cook until golden brown." },
+      { step: 9, text: "Place potato filling in the center, fold the dosa, and serve hot with coconut chutney and sambar." }
     ],
     tags: ["south indian", "breakfast", "vegetarian", "dosa", "fermented"],
     difficulty: "Medium"
@@ -130,7 +97,7 @@ export const featuredRecipes = [
     id: "2",
     title: "Chettinad Chicken Curry",
     description: "A fiery and aromatic chicken curry from the Chettinad region of Tamil Nadu, known for its complex spice blend and rich flavors.",
-    image: southIndianImages[1],
+    image: chettinadChickenImg,
     rating: 4.7,
     prepTime: 20,
     cookTime: 40,
@@ -157,16 +124,16 @@ export const featuredRecipes = [
       { name: "Salt", quantity: "", unit: "to taste" },
     ],
     instructions: [
-      "Dry roast coriander seeds, cumin, peppercorns, fennel, cinnamon, cloves, cardamom, and dried red chilies until fragrant.",
-      "Cool and grind to a fine powder to make the Chettinad masala.",
-      "Heat oil in a large pot, add curry leaves, and sauté onions until golden brown.",
-      "Add ginger-garlic paste and cook for 2 minutes.",
-      "Add tomatoes and cook until soft and oil separates.",
-      "Add chicken pieces and sauté for 5 minutes.",
-      "Add the ground Chettinad masala, turmeric, and salt. Mix well.",
-      "Pour in water, cover, and simmer for 25-30 minutes until chicken is tender.",
-      "Stir in coconut milk, bring to a gentle simmer, and cook for 5 more minutes.",
-      "Garnish with fresh coriander leaves and serve hot with rice or parotta."
+      { step: 1, text: "Dry roast coriander seeds, cumin, peppercorns, fennel, cinnamon, cloves, cardamom, and dried red chilies until fragrant." },
+      { step: 2, text: "Cool and grind to a fine powder to make the Chettinad masala." },
+      { step: 3, text: "Heat oil in a large pot, add curry leaves, and sauté onions until golden brown." },
+      { step: 4, text: "Add ginger-garlic paste and cook for 2 minutes." },
+      { step: 5, text: "Add tomatoes and cook until soft and oil separates." },
+      { step: 6, text: "Add chicken pieces and sauté for 5 minutes." },
+      { step: 7, text: "Add the ground Chettinad masala, turmeric, and salt. Mix well." },
+      { step: 8, text: "Pour in water, cover, and simmer for 25-30 minutes until chicken is tender." },
+      { step: 9, text: "Stir in coconut milk, bring to a gentle simmer, and cook for 5 more minutes." },
+      { step: 10, text: "Garnish with fresh coriander leaves and serve hot with rice or parotta." }
     ],
     tags: ["south indian", "chicken", "spicy", "curry", "chettinad"],
     difficulty: "Medium"
@@ -175,7 +142,7 @@ export const featuredRecipes = [
     id: "3",
     title: "Hyderabadi Vegetable Biryani",
     description: "A fragrant and flavorful layered rice dish with mixed vegetables, saffron, and aromatic spices, inspired by the royal cuisine of Hyderabad.",
-    image: southIndianImages[2],
+    image: vegetableBiryaniImg,
     rating: 4.6,
     prepTime: 30,
     cookTime: 45,
@@ -203,19 +170,19 @@ export const featuredRecipes = [
       { name: "Salt", quantity: "", unit: "to taste" },
     ],
     instructions: [
-      "Soak saffron in warm milk for 15 minutes.",
-      "Wash and soak basmati rice for 30 minutes, then drain.",
-      "In a pot, bring water to a boil with whole spices, salt, and a teaspoon of ghee.",
-      "Add rice and cook until 70% done. Drain and set aside.",
-      "In another pot, heat ghee and sauté onions until golden brown.",
-      "Add ginger-garlic paste, green chilies, and sauté for 2 minutes.",
-      "Add tomatoes, mixed vegetables, and cook for 5 minutes.",
-      "Add biryani masala, salt, yogurt, and cook until vegetables are tender.",
-      "Layer the vegetable mixture with partially cooked rice in a heavy-bottomed pot.",
-      "Sprinkle mint, coriander, fried onions, cashews, raisins, and saffron milk between layers.",
-      "Seal the pot with dough or foil and cook on low heat for 20 minutes.",
-      "Let it rest for 10 minutes before opening.",
-      "Gently mix the layers and serve hot with raita."
+      { step: 1, text: "Soak saffron in warm milk for 15 minutes." },
+      { step: 2, text: "Wash and soak basmati rice for 30 minutes, then drain." },
+      { step: 3, text: "In a pot, bring water to a boil with whole spices, salt, and a teaspoon of ghee." },
+      { step: 4, text: "Add rice and cook until 70% done. Drain and set aside." },
+      { step: 5, text: "In another pot, heat ghee and sauté onions until golden brown." },
+      { step: 6, text: "Add ginger-garlic paste, green chilies, and sauté for 2 minutes." },
+      { step: 7, text: "Add tomatoes, mixed vegetables, and cook for 5 minutes." },
+      { step: 8, text: "Add biryani masala, salt, yogurt, and cook until vegetables are tender." },
+      { step: 9, text: "Layer the vegetable mixture with partially cooked rice in a heavy-bottomed pot." },
+      { step: 10, text: "Sprinkle mint, coriander, fried onions, cashews, raisins, and saffron milk between layers." },
+      { step: 11, text: "Seal the pot with dough or foil and cook on low heat for 20 minutes." },
+      { step: 12, text: "Let it rest for 10 minutes before opening." },
+      { step: 13, text: "Gently mix the layers and serve hot with raita." }
     ],
     tags: ["south indian", "biryani", "vegetarian", "rice", "hyderabadi"],
     difficulty: "Medium"
@@ -224,7 +191,7 @@ export const featuredRecipes = [
     id: "4",
     title: "Kerala Fish Curry (Meen Curry)",
     description: "A tangy and spicy fish curry from Kerala, made with coconut milk, tamarind, and aromatic spices, best served with steamed rice.",
-    image: southIndianImages[3],
+    image: keralaFishCurryImg,
     rating: 4.9,
     prepTime: 15,
     cookTime: 25,
@@ -251,17 +218,17 @@ export const featuredRecipes = [
       { name: "Salt", quantity: "", unit: "to taste" },
     ],
     instructions: [
-      "Clean and cut fish into medium-sized pieces, marinate with turmeric and salt.",
-      "Soak tamarind in warm water for 15 minutes, extract the juice.",
-      "Heat coconut oil in a clay pot, add mustard seeds and let them splutter.",
-      "Add fenugreek seeds, curry leaves, sliced onions, green chilies, ginger, and garlic.",
-      "Sauté until onions are translucent.",
-      "Add chopped tomatoes and cook until soft.",
-      "Add turmeric, red chili powder, coriander powder, and salt. Mix well.",
-      "Pour in tamarind extract and bring to a simmer.",
-      "Add fish pieces carefully and cook for 5 minutes.",
-      "Pour in coconut milk, reduce heat, and simmer for 5-7 more minutes.",
-      "Adjust seasoning, garnish with fresh curry leaves, and serve hot with steamed rice."
+      { step: 1, text: "Clean and cut fish into medium-sized pieces, marinate with turmeric and salt." },
+      { step: 2, text: "Soak tamarind in warm water for 15 minutes, extract the juice." },
+      { step: 3, text: "Heat coconut oil in a clay pot, add mustard seeds and let them splutter." },
+      { step: 4, text: "Add fenugreek seeds, curry leaves, sliced onions, green chilies, ginger, and garlic." },
+      { step: 5, text: "Sauté until onions are translucent." },
+      { step: 6, text: "Add chopped tomatoes and cook until soft." },
+      { step: 7, text: "Add turmeric, red chili powder, coriander powder, and salt. Mix well." },
+      { step: 8, text: "Pour in tamarind extract and bring to a simmer." },
+      { step: 9, text: "Add fish pieces carefully and cook for 5 minutes." },
+      { step: 10, text: "Pour in coconut milk, reduce heat, and simmer for 5-7 more minutes." },
+      { step: 11, text: "Adjust seasoning, garnish with fresh curry leaves, and serve hot with steamed rice." }
     ],
     tags: ["south indian", "fish", "curry", "kerala", "seafood"],
     difficulty: "Easy"
@@ -270,7 +237,7 @@ export const featuredRecipes = [
     id: "5",
     title: "Lemon Rice (Chitranna)",
     description: "A tangy and flavorful South Indian rice dish with lemon juice, peanuts, and tempered spices, perfect for lunch boxes or quick meals.",
-    image: southIndianImages[4],
+    image: lemonRiceImg,
     rating: 4.5,
     prepTime: 10,
     cookTime: 15,
@@ -295,15 +262,15 @@ export const featuredRecipes = [
       { name: "Salt", quantity: "", unit: "to taste" },
     ],
     instructions: [
-      "Cook rice and let it cool completely.",
-      "Heat oil in a pan, add mustard seeds and let them splutter.",
-      "Add urad dal, chana dal, and peanuts. Sauté until golden brown.",
-      "Add chopped green chilies, ginger, curry leaves, and asafoetida. Sauté for a minute.",
-      "Add turmeric powder and mix well.",
-      "Turn off the heat and let the tempering cool slightly.",
-      "Add the tempering to the cooked rice along with lemon juice and salt.",
-      "Mix gently until the rice is evenly coated with the tempering and lemon juice.",
-      "Garnish with chopped cilantro and serve warm or at room temperature."
+      { step: 1, text: "Cook rice and let it cool completely." },
+      { step: 2, text: "Heat oil in a pan, add mustard seeds and let them splutter." },
+      { step: 3, text: "Add urad dal, chana dal, and peanuts. Sauté until golden brown." },
+      { step: 4, text: "Add chopped green chilies, ginger, curry leaves, and asafoetida. Sauté for a minute." },
+      { step: 5, text: "Add turmeric powder and mix well." },
+      { step: 6, text: "Turn off the heat and let the tempering cool slightly." },
+      { step: 7, text: "Add the tempering to the cooked rice along with lemon juice and salt." },
+      { step: 8, text: "Mix gently until the rice is evenly coated with the tempering and lemon juice." },
+      { step: 9, text: "Garnish with chopped cilantro and serve warm or at room temperature." }
     ],
     tags: ["south indian", "rice", "vegetarian", "quick", "lemon"],
     difficulty: "Easy"
@@ -312,7 +279,7 @@ export const featuredRecipes = [
     id: "6",
     title: "Mysore Pak",
     description: "A traditional South Indian sweet made with gram flour, ghee, and sugar, originating from Mysore in Karnataka.",
-    image: southIndianImages[5],
+    image: mysorePakImg,
     rating: 4.7,
     prepTime: 10,
     cookTime: 20,
@@ -328,18 +295,18 @@ export const featuredRecipes = [
       { name: "Cardamom powder", quantity: "1/4", unit: "tsp" },
     ],
     instructions: [
-      "Grease a tray or plate with ghee and keep aside.",
-      "Sift the gram flour to remove any lumps.",
-      "In a heavy-bottomed pan, make sugar syrup by dissolving sugar in water over medium heat.",
-      "Bring the syrup to a single thread consistency.",
-      "Meanwhile, in another pan, heat 1/4 cup of ghee and roast the gram flour on low heat until it gives a nice aroma (about 5 minutes).",
-      "Slowly add the sugar syrup to the roasted gram flour, stirring continuously to avoid lumps.",
-      "Add cardamom powder and mix well.",
-      "Gradually add the remaining ghee in batches, stirring continuously. The mixture will absorb the ghee initially and then start leaving ghee on the sides.",
-      "When the mixture starts leaving ghee and looks porous, pour it immediately into the greased tray.",
-      "Let it set for 5 minutes, then cut into squares while still warm.",
-      "Allow it to cool completely before removing the pieces.",
-      "Store in an airtight container."
+      { step: 1, text: "Grease a tray or plate with ghee and keep aside." },
+      { step: 2, text: "Sift the gram flour to remove any lumps." },
+      { step: 3, text: "In a heavy-bottomed pan, make sugar syrup by dissolving sugar in water over medium heat." },
+      { step: 4, text: "Bring the syrup to a single thread consistency." },
+      { step: 5, text: "Meanwhile, in another pan, heat 1/4 cup of ghee and roast the gram flour on low heat until it gives a nice aroma (about 5 minutes)." },
+      { step: 6, text: "Slowly add the sugar syrup to the roasted gram flour, stirring continuously to avoid lumps." },
+      { step: 7, text: "Add cardamom powder and mix well." },
+      { step: 8, text: "Gradually add the remaining ghee in batches, stirring continuously. The mixture will absorb the ghee initially and then start leaving ghee on the sides." },
+      { step: 9, text: "When the mixture starts leaving ghee and looks porous, pour it immediately into the greased tray." },
+      { step: 10, text: "Let it set for 5 minutes, then cut into squares while still warm." },
+      { step: 11, text: "Allow it to cool completely before removing the pieces." },
+      { step: 12, text: "Store in an airtight container." }
     ],
     tags: ["south indian", "dessert", "sweet", "mysore", "Karnataka"],
     difficulty: "Medium"
@@ -352,7 +319,7 @@ export const southIndianRecipes = [
     id: "7",
     title: "Sambhar",
     description: "A tangy and spicy lentil soup with vegetables, tamarind, and a unique spice blend, essential to South Indian cuisine.",
-    image: southIndianImages[6],
+    image: sambharImg,
     rating: 4.6,
     prepTime: 20,
     cookTime: 30,
@@ -363,14 +330,14 @@ export const southIndianRecipes = [
     difficulty: "Easy",
     tags: ["south indian", "lentil", "soup", "vegetarian", "tamarind"],
     instructions: [
-      "Wash and pressure cook toor dal with turmeric powder until soft.",
-      "Soak tamarind in warm water for 15 minutes and extract the juice.",
-      "In a large pot, add tamarind extract, chopped vegetables, sambar powder, salt, and bring to a boil.",
-      "Cook until vegetables are tender.",
-      "Add the cooked dal and mix well. Simmer for 5 minutes.",
-      "In a small pan, heat oil and add mustard seeds, fenugreek seeds, cumin seeds, curry leaves, dried red chilies, and asafoetida.",
-      "Once the seeds splutter, pour this tempering over the sambhar.",
-      "Garnish with fresh coriander and serve hot with rice or idli."
+      { step: 1, text: "Wash and pressure cook toor dal with turmeric powder until soft." },
+      { step: 2, text: "Soak tamarind in warm water for 15 minutes and extract the juice." },
+      { step: 3, text: "In a large pot, add tamarind extract, chopped vegetables, sambar powder, salt, and bring to a boil." },
+      { step: 4, text: "Cook until vegetables are tender." },
+      { step: 5, text: "Add the cooked dal and mix well. Simmer for 5 minutes." },
+      { step: 6, text: "In a small pan, heat oil and add mustard seeds, fenugreek seeds, cumin seeds, curry leaves, dried red chilies, and asafoetida." },
+      { step: 7, text: "Once the seeds splutter, pour this tempering over the sambhar." },
+      { step: 8, text: "Garnish with fresh coriander and serve hot with rice or idli." }
     ],
     ingredients: [
       { name: "Toor dal", quantity: "1", unit: "cup" },
@@ -393,7 +360,7 @@ export const southIndianRecipes = [
     id: "8",
     title: "Appam with Stew",
     description: "Lacy, fermented rice hoppers served with a fragrant coconut milk vegetable or meat stew, popular in Kerala.",
-    image: southIndianImages[7],
+    image: appamStewImg,
     rating: 4.8,
     prepTime: 30,
     cookTime: 20,
@@ -404,15 +371,15 @@ export const southIndianRecipes = [
     difficulty: "Medium",
     tags: ["south indian", "kerala", "breakfast", "coconut", "fermented"],
     instructions: [
-      "Soak rice for 4-6 hours, then drain.",
-      "Grind rice with coconut, yeast, and sugar to make a smooth batter.",
-      "Add salt and let the batter ferment for 8 hours or overnight.",
-      "For the stew, heat oil and sauté onions, ginger, garlic, and green chilies.",
-      "Add vegetables or meat and cook until partially done.",
-      "Add coconut milk, spices, and salt. Simmer until fully cooked.",
-      "For appams, heat an appam pan, pour a ladle of batter, and swirl to coat.",
-      "Cover and cook until the edges are crisp and the center is soft.",
-      "Serve hot appams with the stew."
+      { step: 1, text: "Soak rice for 4-6 hours, then drain." },
+      { step: 2, text: "Grind rice with coconut, yeast, and sugar to make a smooth batter." },
+      { step: 3, text: "Add salt and let the batter ferment for 8 hours or overnight." },
+      { step: 4, text: "For the stew, heat oil and sauté onions, ginger, garlic, and green chilies." },
+      { step: 5, text: "Add vegetables or meat and cook until partially done." },
+      { step: 6, text: "Add coconut milk, spices, and salt. Simmer until fully cooked." },
+      { step: 7, text: "For appams, heat an appam pan, pour a ladle of batter, and swirl to coat." },
+      { step: 8, text: "Cover and cook until the edges are crisp and the center is soft." },
+      { step: 9, text: "Serve hot appams with the stew." }
     ],
     ingredients: [
       { name: "Rice", quantity: "2", unit: "cups" },
@@ -451,28 +418,28 @@ export const categories = [
 // Define the trending ingredients by season
 export const trendingIngredients = {
   spring: [
-    { name: "Spinach", image: ingredientImages[9], percentageChange: 45 },
-    { name: "Fresh Herbs", image: ingredientImages[1], percentageChange: 38 },
-    { name: "Green Peas", image: ingredientImages[6], percentageChange: 32 },
-    { name: "Asparagus", image: ingredientImages[7], percentageChange: 28 }
+    { name: "Spinach", image: spinachImg, percentageChange: 45 },
+    { name: "Fresh Herbs", image: curryLeavesImg, percentageChange: 38 },
+    { name: "Green Peas", image: bellPeppersImg, percentageChange: 32 },
+    { name: "Asparagus", image: mushroomsImg, percentageChange: 28 }
   ],
   summer: [
-    { name: "Coconut", image: ingredientImages[0], percentageChange: 52 },
-    { name: "Tomatoes", image: ingredientImages[5], percentageChange: 40 },
-    { name: "Bell Peppers", image: ingredientImages[6], percentageChange: 35 },
-    { name: "Avocado", image: ingredientImages[8], percentageChange: 30 }
+    { name: "Coconut", image: coconutImg, percentageChange: 52 },
+    { name: "Tomatoes", image: tomatoesImg, percentageChange: 40 },
+    { name: "Bell Peppers", image: bellPeppersImg, percentageChange: 35 },
+    { name: "Avocado", image: avocadoImg, percentageChange: 30 }
   ],
   autumn: [
-    { name: "Turmeric", image: ingredientImages[2], percentageChange: 48 },
-    { name: "Lentils", image: ingredientImages[3], percentageChange: 42 },
-    { name: "Mushrooms", image: ingredientImages[7], percentageChange: 36 },
-    { name: "Rice", image: ingredientImages[4], percentageChange: 25 }
+    { name: "Turmeric", image: turmericImg, percentageChange: 48 },
+    { name: "Lentils", image: lentilsImg, percentageChange: 42 },
+    { name: "Mushrooms", image: mushroomsImg, percentageChange: 36 },
+    { name: "Rice", image: riceImg, percentageChange: 25 }
   ],
   winter: [
-    { name: "Rice", image: ingredientImages[4], percentageChange: 38 },
-    { name: "Lentils", image: ingredientImages[3], percentageChange: 35 },
-    { name: "Curry Leaves", image: ingredientImages[1], percentageChange: 30 },
-    { name: "Coconut", image: ingredientImages[0], percentageChange: 22 }
+    { name: "Rice", image: riceImg, percentageChange: 38 },
+    { name: "Lentils", image: lentilsImg, percentageChange: 35 },
+    { name: "Curry Leaves", image: curryLeavesImg, percentageChange: 30 },
+    { name: "Coconut", image: coconutImg, percentageChange: 22 }
   ]
 };
 
