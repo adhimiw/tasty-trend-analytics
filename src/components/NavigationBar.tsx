@@ -1,39 +1,40 @@
 
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Search, User, Menu, X, LogOut } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown, User, LogOut, BookOpen, TrendingUp, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
 const NavigationBar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location.pathname]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrolled]);
 
   const handleSignOut = async () => {
     try {
@@ -46,216 +47,186 @@ const NavigationBar = () => {
     }
   };
 
+  // Toggle mobile menu
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Close mobile menu when location changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
+  const navClass = scrolled
+    ? "fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-sm border-b"
+    : "fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm";
+
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg shadow-sm py-2"
-          : "bg-transparent py-4"
-      )}
-    >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link
-          to="/"
-          className="font-serif text-2xl font-bold text-primary transition-all duration-300 hover:opacity-80"
-        >
-          TastyTrends
+    <nav className={navClass}>
+      <div className="container flex justify-between items-center py-3 px-4">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <Coffee className="h-6 w-6 text-primary mr-2" />
+          <span className="font-serif text-xl font-bold">Tasty Trends</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/"
-            className={cn(
-              "font-medium transition-colors hover:text-primary",
-              location.pathname === "/" && "text-primary"
-            )}
-          >
-            Home
-          </Link>
+        <div className="hidden md:flex items-center space-x-1">
           <Link
             to="/browse"
-            className={cn(
-              "font-medium transition-colors hover:text-primary",
-              location.pathname.includes("/browse") && "text-primary"
-            )}
+            className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
           >
-            Browse
+            Browse Recipes
           </Link>
           <Link
             to="/trends"
-            className={cn(
-              "font-medium transition-colors hover:text-primary",
-              location.pathname === "/trends" && "text-primary"
-            )}
+            className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
           >
-            Trends
+            <span className="flex items-center">
+              <TrendingUp className="h-4 w-4 mr-1" />
+              Trends
+            </span>
           </Link>
           <Link
             to="/submit-recipe"
-            className={cn(
-              "font-medium transition-colors hover:text-primary",
-              location.pathname === "/submit-recipe" && "text-primary"
-            )}
+            className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
           >
             Submit Recipe
           </Link>
-        </nav>
-
-        <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" size="icon" aria-label="Search">
-            <Search className="h-5 w-5" />
-          </Button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              {user && profile ? (
-                <Button variant="ghost" size="icon" className="rounded-full" aria-label="User menu">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
-                    <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
-                  </Avatar>
-                </Button>
-              ) : (
-                <Button variant="ghost" size="icon" aria-label="User menu">
-                  <User className="h-5 w-5" />
-                </Button>
-              )}
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              {user && profile ? (
-                <>
-                  <div className="flex items-center gap-2 p-2">
-                    <Avatar className="h-8 w-8">
-                      <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
-                      <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col">
-                      <span className="text-sm font-medium">{profile.display_name || profile.username}</span>
-                      <span className="text-xs text-muted-foreground">@{profile.username}</span>
-                    </div>
-                  </div>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link to="/profile" className="w-full cursor-pointer">
-                      My Profile
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive focus:text-destructive">
-                    Sign Out
-                  </DropdownMenuItem>
-                </>
-              ) : (
-                <>
-                  <DropdownMenuItem asChild>
-                    <Link to="/login" className="w-full cursor-pointer">
-                      Sign In
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link to="/profile" className="w-full cursor-pointer">
-                      My Profile
-                    </Link>
-                  </DropdownMenuItem>
-                </>
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
 
-        {/* Mobile menu button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
+        {/* Desktop User Menu or Login Button */}
+        <div className="hidden md:block">
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative p-0 h-8 w-8 rounded-full">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={profile?.profile_image || ""} alt={profile?.display_name || "User"} />
+                    <AvatarFallback>{profile?.display_name?.charAt(0) || user.email?.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="flex items-center justify-start gap-2 p-2">
+                  <div className="flex flex-col space-y-1 leading-none">
+                    {profile?.display_name && (
+                      <p className="font-medium">{profile.display_name}</p>
+                    )}
+                    <p className="text-sm text-muted-foreground overflow-hidden text-ellipsis">
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link to="/profile" className="cursor-pointer w-full flex items-center">
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to="/browse" className="cursor-pointer w-full flex items-center">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    <span>My Recipes</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  className="cursor-pointer text-destructive focus:text-destructive"
+                  onClick={handleSignOut}
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Sign out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button asChild>
+              <Link to="/login">Log in</Link>
+            </Button>
+          )}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Menu">
+            {isMenuOpen ? <X /> : <Menu />}
+          </Button>
+        </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden fixed inset-0 z-40 bg-background/98 transition-transform duration-300 ease-in-out ${
-          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col h-full px-6 pt-24 pb-6 space-y-8">
-          <nav className="flex flex-col space-y-6 text-lg">
-            <Link
-              to="/"
-              className={cn(
-                "font-medium transition-colors hover:text-primary",
-                location.pathname === "/" && "text-primary"
-              )}
-            >
-              Home
-            </Link>
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden p-4 pt-0 pb-6 bg-background border-b">
+          <div className="flex flex-col space-y-3">
             <Link
               to="/browse"
-              className={cn(
-                "font-medium transition-colors hover:text-primary",
-                location.pathname.includes("/browse") && "text-primary"
-              )}
+              className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
             >
-              Browse
+              Browse Recipes
             </Link>
             <Link
               to="/trends"
-              className={cn(
-                "font-medium transition-colors hover:text-primary",
-                location.pathname === "/trends" && "text-primary"
-              )}
+              className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
             >
-              Trends
+              <span className="flex items-center">
+                <TrendingUp className="h-4 w-4 mr-1" />
+                Trends
+              </span>
             </Link>
             <Link
               to="/submit-recipe"
-              className={cn(
-                "font-medium transition-colors hover:text-primary",
-                location.pathname === "/submit-recipe" && "text-primary"
-              )}
+              className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
             >
               Submit Recipe
             </Link>
-          </nav>
-
-          <div className="flex flex-col space-y-4 mt-auto">
-            {user && profile ? (
+            {user ? (
               <>
-                <div className="flex items-center gap-3 p-2 border border-border rounded-lg">
-                  <Avatar className="h-10 w-10">
-                    <AvatarImage src={profile.profile_image || undefined} alt={profile.username} />
-                    <AvatarFallback>{profile.username?.[0] || 'U'}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex flex-col">
-                    <span className="font-medium">{profile.display_name || profile.username}</span>
-                    <span className="text-sm text-muted-foreground">@{profile.username}</span>
+                <div className="px-3 py-2">
+                  <div className="flex items-center space-x-3">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={profile?.profile_image || ""} alt={profile?.display_name || "User"} />
+                      <AvatarFallback>{profile?.display_name?.charAt(0) || user.email?.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">{profile?.display_name || "User"}</p>
+                      <p className="text-xs text-muted-foreground truncate max-w-[150px]">
+                        {user.email}
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <Button variant="default" asChild className="w-full">
-                  <Link to="/profile">My Profile</Link>
-                </Button>
-                <Button variant="outline" className="w-full flex items-center justify-center" onClick={handleSignOut}>
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Sign Out
-                </Button>
+                <Link
+                  to="/profile"
+                  className="px-3 py-2 rounded-md hover:bg-secondary transition-colors"
+                >
+                  <span className="flex items-center">
+                    <User className="h-4 w-4 mr-2" />
+                    Profile
+                  </span>
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="px-3 py-2 rounded-md hover:bg-destructive/10 transition-colors text-destructive text-left"
+                >
+                  <span className="flex items-center">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Sign out
+                  </span>
+                </button>
               </>
             ) : (
-              <>
-                <Button variant="default" asChild className="w-full">
-                  <Link to="/login">Sign In</Link>
+              <div className="pt-2">
+                <Button asChild className="w-full">
+                  <Link to="/login">Log in</Link>
                 </Button>
-                <Button variant="outline" asChild className="w-full">
-                  <Link to="/profile">My Profile</Link>
-                </Button>
-              </>
+              </div>
             )}
           </div>
         </div>
-      </div>
-    </header>
+      )}
+    </nav>
   );
 };
 
