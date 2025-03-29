@@ -1,62 +1,14 @@
-// Local recipe images instead of external URLs
-// Import all local images
-import masalaDosaImg from '../assets/images/recipes/masala-dosa.jpg';
-import chettinadChickenImg from '../assets/images/recipes/chettinad-chicken.jpg';
-import vegetableBiryaniImg from '../assets/images/recipes/vegetable-biryani.jpg';
-import keralaFishCurryImg from '../assets/images/recipes/kerala-fish-curry.jpg';
-import lemonRiceImg from '../assets/images/recipes/lemon-rice.jpg';
-import mysorePakImg from '../assets/images/recipes/mysore-pak.jpg';
-import sambharImg from '../assets/images/recipes/sambhar.jpg';
-import appamStewImg from '../assets/images/recipes/appam-stew.jpg';
 
-// Baking images
-import chocolateCakeImg from '../assets/images/recipes/chocolate-cake.jpg';
-import sourdoughBreadImg from '../assets/images/recipes/sourdough-bread.jpg';
-import cinnamonRollsImg from '../assets/images/recipes/cinnamon-rolls.jpg';
-import blueberryMuffinsImg from '../assets/images/recipes/blueberry-muffins.jpg';
-
-// Quick dinner images
-import pastaImg from '../assets/images/recipes/pasta.jpg';
-import stirFryImg from '../assets/images/recipes/stir-fry.jpg';
-import tacoSaladImg from '../assets/images/recipes/taco-salad.jpg';
-import quesadillaImg from '../assets/images/recipes/quesadilla.jpg';
-
-// Beverage images
-import masalaChaiImg from '../assets/images/recipes/masala-chai.jpg';
-import mangoLassiImg from '../assets/images/recipes/mango-lassi.jpg';
-import mocktailImg from '../assets/images/recipes/mocktail.jpg';
-import smoothieImg from '../assets/images/recipes/smoothie.jpg';
-
-// One pot meal images
-import biryaniImg from '../assets/images/recipes/biryani.jpg';
-import paellaImg from '../assets/images/recipes/paella.jpg';
-import risottoImg from '../assets/images/recipes/risotto.jpg';
-import chiliImg from '../assets/images/recipes/chili.jpg';
-
-// Soup & Stew images 
-import tomatoSoupImg from '../assets/images/recipes/tomato-soup.jpg';
-import lentilSoupImg from '../assets/images/recipes/lentil-soup.jpg';
-import beefStewImg from '../assets/images/recipes/beef-stew.jpg';
-import minestroneSoupImg from '../assets/images/recipes/minestrone-soup.jpg';
-
-// Ingredient images
-import coconutImg from '../assets/images/ingredients/coconut.jpg';
-import curryLeavesImg from '../assets/images/ingredients/curry-leaves.jpg';
-import turmericImg from '../assets/images/ingredients/turmeric.jpg';
-import lentilsImg from '../assets/images/ingredients/lentils.jpg';
-import riceImg from '../assets/images/ingredients/rice.jpg';
-import tomatoesImg from '../assets/images/ingredients/tomatoes.jpg';
-import bellPeppersImg from '../assets/images/ingredients/bell-peppers.jpg';
-import mushroomsImg from '../assets/images/ingredients/mushrooms.jpg';
-import avocadoImg from '../assets/images/ingredients/avocado.jpg';
-import spinachImg from '../assets/images/ingredients/spinach.jpg';
+// Use placeholder images instead of non-existent local files
+// We'll use a consistent placeholder image URL for all recipes and ingredients
+const placeholderImage = '/placeholder.svg';
 
 export const featuredRecipes = [
   {
     id: "1",
     title: "Masala Dosa with Coconut Chutney",
     description: "A classic South Indian breakfast dish featuring crispy rice crepes filled with spiced potatoes, served with coconut chutney and sambar.",
-    image: masalaDosaImg,
+    image: placeholderImage,
     rating: 4.8,
     prepTime: 30,
     cookTime: 15,
@@ -97,7 +49,7 @@ export const featuredRecipes = [
     id: "2",
     title: "Chettinad Chicken Curry",
     description: "A fiery and aromatic chicken curry from the Chettinad region of Tamil Nadu, known for its complex spice blend and rich flavors.",
-    image: chettinadChickenImg,
+    image: placeholderImage,
     rating: 4.7,
     prepTime: 20,
     cookTime: 40,
@@ -142,7 +94,7 @@ export const featuredRecipes = [
     id: "3",
     title: "Hyderabadi Vegetable Biryani",
     description: "A fragrant and flavorful layered rice dish with mixed vegetables, saffron, and aromatic spices, inspired by the royal cuisine of Hyderabad.",
-    image: vegetableBiryaniImg,
+    image: placeholderImage,
     rating: 4.6,
     prepTime: 30,
     cookTime: 45,
@@ -191,7 +143,7 @@ export const featuredRecipes = [
     id: "4",
     title: "Kerala Fish Curry (Meen Curry)",
     description: "A tangy and spicy fish curry from Kerala, made with coconut milk, tamarind, and aromatic spices, best served with steamed rice.",
-    image: keralaFishCurryImg,
+    image: placeholderImage,
     rating: 4.9,
     prepTime: 15,
     cookTime: 25,
@@ -237,7 +189,7 @@ export const featuredRecipes = [
     id: "5",
     title: "Lemon Rice (Chitranna)",
     description: "A tangy and flavorful South Indian rice dish with lemon juice, peanuts, and tempered spices, perfect for lunch boxes or quick meals.",
-    image: lemonRiceImg,
+    image: placeholderImage,
     rating: 4.5,
     prepTime: 10,
     cookTime: 15,
@@ -279,7 +231,7 @@ export const featuredRecipes = [
     id: "6",
     title: "Mysore Pak",
     description: "A traditional South Indian sweet made with gram flour, ghee, and sugar, originating from Mysore in Karnataka.",
-    image: mysorePakImg,
+    image: placeholderImage,
     rating: 4.7,
     prepTime: 10,
     cookTime: 20,
@@ -319,7 +271,7 @@ export const southIndianRecipes = [
     id: "7",
     title: "Sambhar",
     description: "A tangy and spicy lentil soup with vegetables, tamarind, and a unique spice blend, essential to South Indian cuisine.",
-    image: sambharImg,
+    image: placeholderImage,
     rating: 4.6,
     prepTime: 20,
     cookTime: 30,
@@ -360,7 +312,7 @@ export const southIndianRecipes = [
     id: "8",
     title: "Appam with Stew",
     description: "Lacy, fermented rice hoppers served with a fragrant coconut milk vegetable or meat stew, popular in Kerala.",
-    image: appamStewImg,
+    image: placeholderImage,
     rating: 4.8,
     prepTime: 30,
     cookTime: 20,
@@ -418,28 +370,28 @@ export const categories = [
 // Define the trending ingredients by season
 export const trendingIngredients = {
   spring: [
-    { name: "Spinach", image: spinachImg, percentageChange: 45 },
-    { name: "Fresh Herbs", image: curryLeavesImg, percentageChange: 38 },
-    { name: "Green Peas", image: bellPeppersImg, percentageChange: 32 },
-    { name: "Asparagus", image: mushroomsImg, percentageChange: 28 }
+    { name: "Spinach", image: placeholderImage, percentageChange: 45 },
+    { name: "Fresh Herbs", image: placeholderImage, percentageChange: 38 },
+    { name: "Green Peas", image: placeholderImage, percentageChange: 32 },
+    { name: "Asparagus", image: placeholderImage, percentageChange: 28 }
   ],
   summer: [
-    { name: "Coconut", image: coconutImg, percentageChange: 52 },
-    { name: "Tomatoes", image: tomatoesImg, percentageChange: 40 },
-    { name: "Bell Peppers", image: bellPeppersImg, percentageChange: 35 },
-    { name: "Avocado", image: avocadoImg, percentageChange: 30 }
+    { name: "Coconut", image: placeholderImage, percentageChange: 52 },
+    { name: "Tomatoes", image: placeholderImage, percentageChange: 40 },
+    { name: "Bell Peppers", image: placeholderImage, percentageChange: 35 },
+    { name: "Avocado", image: placeholderImage, percentageChange: 30 }
   ],
   autumn: [
-    { name: "Turmeric", image: turmericImg, percentageChange: 48 },
-    { name: "Lentils", image: lentilsImg, percentageChange: 42 },
-    { name: "Mushrooms", image: mushroomsImg, percentageChange: 36 },
-    { name: "Rice", image: riceImg, percentageChange: 25 }
+    { name: "Turmeric", image: placeholderImage, percentageChange: 48 },
+    { name: "Lentils", image: placeholderImage, percentageChange: 42 },
+    { name: "Mushrooms", image: placeholderImage, percentageChange: 36 },
+    { name: "Rice", image: placeholderImage, percentageChange: 25 }
   ],
   winter: [
-    { name: "Rice", image: riceImg, percentageChange: 38 },
-    { name: "Lentils", image: lentilsImg, percentageChange: 35 },
-    { name: "Curry Leaves", image: curryLeavesImg, percentageChange: 30 },
-    { name: "Coconut", image: coconutImg, percentageChange: 22 }
+    { name: "Rice", image: placeholderImage, percentageChange: 38 },
+    { name: "Lentils", image: placeholderImage, percentageChange: 35 },
+    { name: "Curry Leaves", image: placeholderImage, percentageChange: 30 },
+    { name: "Coconut", image: placeholderImage, percentageChange: 22 }
   ]
 };
 
