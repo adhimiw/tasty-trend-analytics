@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
@@ -26,10 +27,10 @@ import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
 import RecipeCard from "@/components/RecipeCard";
 import EditProfileDialog from "@/components/EditProfileDialog";
-import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { Recipe, Ingredient, Instruction } from "@/types/database";
+import { Recipe } from "@/types/database";
 import { toast } from "sonner";
+import { getRecipesByUserId, getSavedRecipeDetails } from "@/services/jsonDataService";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("my-recipes");
@@ -50,44 +51,13 @@ const Profile = () => {
     fetchSavedRecipes();
   }, [user, navigate]);
   
-  const convertToRecipeType = (recipeData: any[]): Recipe[] => {
-    return recipeData.map(recipe => ({
-      ...recipe,
-      prep_time: recipe.prep_time || 0,
-      cook_time: recipe.cook_time || 0,
-      servings: recipe.servings || 0,
-      ingredients: Array.isArray(recipe.ingredients) 
-        ? recipe.ingredients.map((ing: any) => ({
-            name: ing.name || '',
-            quantity: ing.quantity || '',
-            unit: ing.unit || ''
-          }))
-        : [],
-      instructions: Array.isArray(recipe.instructions)
-        ? recipe.instructions.map((inst: any) => ({
-            step: inst.step || 0,
-            text: inst.text || '',
-            image: inst.image || null
-          }))
-        : [],
-      tags: recipe.tags || []
-    })) as Recipe[];
-  };
-  
   const fetchUserRecipes = async () => {
     if (!user) return;
     
     try {
       setLoading(true);
-      const { data, error } = await supabase
-        .from('recipes')
-        .select('*')
-        .eq('user_id', user.id);
-      
-      if (error) throw error;
-      
-      const typedData = convertToRecipeType(data || []);
-      setUserRecipes(typedData);
+      const recipes = getRecipesByUserId(user.id);
+      setUserRecipes(recipes);
     } catch (error) {
       console.error("Error fetching user recipes:", error);
       toast.error("Failed to load your recipes");
@@ -101,28 +71,8 @@ const Profile = () => {
     
     try {
       setLoading(true);
-      const { data: savedData, error: savedError } = await supabase
-        .from('saved_recipes')
-        .select('recipe_id')
-        .eq('user_id', user.id);
-      
-      if (savedError) throw savedError;
-      
-      if (savedData && savedData.length > 0) {
-        const recipeIds = savedData.map(item => item.recipe_id);
-        
-        const { data: recipesData, error: recipesError } = await supabase
-          .from('recipes')
-          .select('*')
-          .in('id', recipeIds);
-        
-        if (recipesError) throw recipesError;
-        
-        const typedData = convertToRecipeType(recipesData || []);
-        setSavedRecipes(typedData);
-      } else {
-        setSavedRecipes([]);
-      }
+      const savedRecipesData = getSavedRecipeDetails(user.id);
+      setSavedRecipes(savedRecipesData || []);
     } catch (error) {
       console.error("Error fetching saved recipes:", error);
       toast.error("Failed to load your saved recipes");

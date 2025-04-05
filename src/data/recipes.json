@@ -1,0 +1,43 @@
+
+[
+  {
+    "id": "101",
+    "title": "Homemade Masala Dosa",
+    "description": "A delicious South Indian breakfast dish.",
+    "cuisine": "South Indian",
+    "category": "Breakfast",
+    "difficulty": "Medium",
+    "prep_time": 30,
+    "cook_time": 15,
+    "servings": 4,
+    "tags": ["vegetarian", "indian", "breakfast"],
+    "ingredients": [
+      {
+        "name": "Rice",
+        "quantity": "2",
+        "unit": "cups"
+      },
+      {
+        "name": "Urad dal",
+        "quantity": "1",
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "text": "Soak rice and urad dal overnight."
+      },
+      {
+        "step": 2,
+        "text": "Grind to make a batter and ferment."
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Demo User",
+    "user_id": "1",
+    "created_at": "2023-04-02T10:00:00Z",
+    "updated_at": "2023-04-02T10:00:00Z"
+  }
+]

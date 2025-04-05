@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { updateProfile } from "@/services/jsonDataService";
 import { Profile } from "@/types/database";
 
 interface EditProfileDialogProps {
@@ -49,18 +49,13 @@ const EditProfileDialog = ({
     setLoading(true);
     
     try {
-      const { error } = await supabase
-        .from('profiles')
-        .update({
-          display_name: displayName,
-          username: username,
-          bio: bio,
-          profile_image: profileImage,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', profile.id);
-      
-      if (error) throw error;
+      updateProfile(profile.id, {
+        display_name: displayName,
+        username: username,
+        bio: bio,
+        profile_image: profileImage,
+        updated_at: new Date().toISOString()
+      });
       
       toast.success("Profile updated successfully!");
       onProfileUpdated();

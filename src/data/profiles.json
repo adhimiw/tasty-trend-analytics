@@ -1,0 +1,13 @@
+
+[
+  {
+    "id": "1",
+    "display_name": "Demo User",
+    "username": "demouser",
+    "bio": "I love cooking South Indian cuisine!",
+    "profile_image": "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    "email": "user@example.com",
+    "created_at": "2023-04-01T12:00:00Z",
+    "updated_at": "2023-04-01T12:00:00Z"
+  }
+]
