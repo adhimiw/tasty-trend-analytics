@@ -41,6 +41,30 @@ const saveData = (key: string, data: any) => {
   localStorage.setItem(key, JSON.stringify(data));
 };
 
+// Recipe adapter to convert between snake_case API and camelCase UI
+export interface RecipeUI extends Omit<Recipe, 'prep_time' | 'cook_time'> {
+  prepTime: number;
+  cookTime: number;
+}
+
+export const adaptRecipeToUI = (recipe: Recipe): RecipeUI => {
+  const { prep_time, cook_time, ...rest } = recipe;
+  return {
+    ...rest,
+    prepTime: prep_time || 0,
+    cookTime: cook_time || 0
+  };
+};
+
+export const adaptRecipeFromUI = (recipeUI: RecipeUI): Recipe => {
+  const { prepTime, cookTime, ...rest } = recipeUI;
+  return {
+    ...rest,
+    prep_time: prepTime,
+    cook_time: cookTime
+  };
+};
+
 // Users
 export const getUsers = () => getData(USERS_KEY);
 export const getUserByEmail = (email: string) => {
@@ -128,40 +152,47 @@ export const updateProfile = (id: string, updates: Partial<Profile>) => {
 };
 
 // Recipes
-export const getRecipes = () => getData(RECIPES_KEY);
+export const getRecipes = () => {
+  const rawRecipes = getData(RECIPES_KEY);
+  return rawRecipes.map(adaptRecipeToUI);
+};
 
 export const getRecipeById = (id: string) => {
-  const recipes = getRecipes();
-  return recipes.find((recipe: any) => recipe.id === id) || null;
+  const recipes = getData(RECIPES_KEY);
+  const recipe = recipes.find((recipe: any) => recipe.id === id);
+  return recipe ? adaptRecipeToUI(recipe) : null;
 };
 
 export const getRecipesByUserId = (userId: string) => {
-  const recipes = getRecipes();
-  return recipes.filter((recipe: any) => recipe.user_id === userId);
+  const recipes = getData(RECIPES_KEY);
+  return recipes
+    .filter((recipe: any) => recipe.user_id === userId)
+    .map(adaptRecipeToUI);
 };
 
-export const createRecipe = (recipe: Partial<Recipe>) => {
-  const recipes = getRecipes();
-  const newRecipe = {
+export const createRecipe = (recipe: Partial<RecipeUI>) => {
+  const recipes = getData(RECIPES_KEY);
+  const recipeToSave = adaptRecipeFromUI({
     ...recipe,
     id: Date.now().toString(),
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
-  };
+  } as RecipeUI);
   
-  saveData(RECIPES_KEY, [...recipes, newRecipe]);
-  return newRecipe;
+  saveData(RECIPES_KEY, [...recipes, recipeToSave]);
+  return adaptRecipeToUI(recipeToSave);
 };
 
-export const updateRecipe = (id: string, updates: Partial<Recipe>) => {
-  const recipes = getRecipes();
-  const updatedRecipes = recipes.map((recipe: any) => {
+export const updateRecipe = (id: string, updates: Partial<RecipeUI>) => {
+  const recipes = getData(RECIPES_KEY);
+  const updatedRecipes = recipes.map((recipe: Recipe) => {
     if (recipe.id === id) {
-      return { 
-        ...recipe, 
-        ...updates, 
-        updated_at: new Date().toISOString() 
+      const updatedRecipe = {
+        ...recipe,
+        ...adaptRecipeFromUI(updates as RecipeUI),
+        updated_at: new Date().toISOString()
       };
+      return updatedRecipe;
     }
     return recipe;
   });
@@ -171,7 +202,7 @@ export const updateRecipe = (id: string, updates: Partial<Recipe>) => {
 };
 
 export const deleteRecipe = (id: string) => {
-  const recipes = getRecipes();
+  const recipes = getData(RECIPES_KEY);
   const updatedRecipes = recipes.filter((recipe: any) => recipe.id !== id);
   saveData(RECIPES_KEY, updatedRecipes);
 };
@@ -186,12 +217,15 @@ export const getSavedRecipesByUserId = (userId: string) => {
 
 export const getSavedRecipeDetails = (userId: string) => {
   const savedRecipes = getSavedRecipesByUserId(userId);
-  const recipes = getRecipes();
+  const recipes = getData(RECIPES_KEY);
   
   // Get full recipe details for each saved recipe
-  return savedRecipes.map((savedRecipe: any) => {
-    return recipes.find((recipe: any) => recipe.id === savedRecipe.recipe_id);
-  }).filter(Boolean); // Remove any null values
+  return savedRecipes
+    .map((savedRecipe: any) => {
+      const recipe = recipes.find((r: any) => r.id === savedRecipe.recipe_id);
+      return recipe ? adaptRecipeToUI(recipe) : null;
+    })
+    .filter(Boolean); // Remove any null values
 };
 
 export const saveRecipe = (userId: string, recipeId: string) => {

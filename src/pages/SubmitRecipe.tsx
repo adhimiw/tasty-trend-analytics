@@ -40,7 +40,7 @@ import {
 } from "@/components/ui/tooltip";
 import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
-import { supabase } from "@/integrations/supabase/client";
+import { createRecipe } from "@/services/jsonDataService";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
@@ -195,32 +195,26 @@ const SubmitRecipe = () => {
         difficulty.toLowerCase()
       ].filter(Boolean);
       
-      const { data, error } = await supabase
-        .from('recipes')
-        .insert({
-          user_id: user.id,
-          title: title.trim(),
-          description: description.trim(),
-          image: imagePreview,
-          prep_time: prepTime,
-          cook_time: cookTime,
-          servings: servings,
-          chef: profile?.display_name || profile?.username,
-          cuisine: cuisine,
-          category: category,
-          difficulty: difficulty,
-          ingredients: formattedIngredients,
-          instructions: formattedInstructions,
-          tags: tags,
-          rating: 0 // Default rating for new recipes
-        })
-        .select()
-        .single();
-      
-      if (error) throw error;
+      const newRecipe = createRecipe({
+        title: title.trim(),
+        description: description.trim(),
+        image: imagePreview,
+        prepTime: prepTime,
+        cookTime: cookTime,
+        servings: servings,
+        chef: profile?.display_name || profile?.username,
+        cuisine: cuisine,
+        category: category,
+        difficulty: difficulty,
+        ingredients: formattedIngredients,
+        instructions: formattedInstructions,
+        tags: tags,
+        rating: 0, // Default rating for new recipes
+        user_id: user.id
+      });
       
       toast.success("Recipe submitted successfully!");
-      navigate(`/recipe/${data.id}`);
+      navigate(`/recipe/${newRecipe.id}`);
     } catch (error) {
       console.error("Error submitting recipe:", error);
       toast.error("Failed to submit recipe. Please try again.");
