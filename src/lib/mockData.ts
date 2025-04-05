@@ -112,7 +112,9 @@ export const getAllRecipes = (): RecipeUI[] => {
 
 // Helper function to get a recipe by its ID
 export const getRecipeById = (id: string): RecipeUI | null => {
-  return getRecipeByIdService(id);
+  const recipe = getRecipeByIdService(id);
+  console.log("Recipe fetched:", id, recipe);
+  return recipe;
 };
 
 // Helper function to get recipes by category

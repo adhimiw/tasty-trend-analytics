@@ -48,6 +48,7 @@ const RecipeDetail = () => {
           const foundRecipe = getRecipeById(id);
           if (foundRecipe) {
             setRecipe(foundRecipe);
+            setServings(foundRecipe.servings || 4);
             // Get 3 related recipes (excluding current recipe)
             const related = southIndianRecipes
               .filter(r => r.id !== id)
@@ -124,6 +125,15 @@ const RecipeDetail = () => {
     );
   }
 
+  // Access prepTime and cookTime correctly based on the recipe structure
+  const prepTime = recipe.prepTime || recipe.prep_time || 0;
+  const cookTime = recipe.cookTime || recipe.cook_time || 0;
+  const recipeServings = recipe.servings || 4;
+
+  // Make sure instructions is always an array
+  const instructions = recipe.instructions || [];
+  const isStepObjectArray = instructions.length > 0 && typeof instructions[0] === 'object';
+
   return (
     <div className="min-h-screen flex flex-col">
       <NavigationBar />
@@ -185,7 +195,7 @@ const RecipeDetail = () => {
                 <Clock className="h-4 w-4" />
                 <span className="text-sm font-medium">Prep Time</span>
               </div>
-              <p className="font-medium">{recipe.prepTime} minutes</p>
+              <p className="font-medium">{prepTime} minutes</p>
             </div>
             
             <div className="p-4 bg-secondary/50 rounded-xl">
@@ -193,7 +203,7 @@ const RecipeDetail = () => {
                 <Clock className="h-4 w-4" />
                 <span className="text-sm font-medium">Cook Time</span>
               </div>
-              <p className="font-medium">{recipe.cookTime} minutes</p>
+              <p className="font-medium">{cookTime} minutes</p>
             </div>
             
             <div className="p-4 bg-secondary/50 rounded-xl">
@@ -201,7 +211,7 @@ const RecipeDetail = () => {
                 <Users className="h-4 w-4" />
                 <span className="text-sm font-medium">Servings</span>
               </div>
-              <p className="font-medium">{recipe.servings}</p>
+              <p className="font-medium">{recipeServings}</p>
             </div>
             
             <div className="p-4 bg-secondary/50 rounded-xl">
@@ -255,8 +265,8 @@ const RecipeDetail = () => {
                           <span>
                             {ingredient.quantity && (
                               <span className="font-medium">
-                                {ingredient.quantity && servings !== recipe.servings
-                                  ? ((parseFloat(ingredient.quantity) || 0) * servings / recipe.servings).toFixed(
+                                {ingredient.quantity && servings !== recipeServings
+                                  ? ((parseFloat(ingredient.quantity) || 0) * servings / recipeServings).toFixed(
                                       ingredient.quantity.includes("/") || !parseFloat(ingredient.quantity) ? 0 : 1
                                     )
                                   : ingredient.quantity}{" "}
@@ -286,15 +296,15 @@ const RecipeDetail = () => {
                 <TabsContent value="instructions" className="animate-fade-in">
                   <h2 className="font-serif text-xl font-semibold mb-6">Step By Step Instructions</h2>
                   
-                  {recipe.instructions ? (
+                  {instructions.length > 0 ? (
                     <ol className="space-y-6">
-                      {recipe.instructions.map((step: string, index: number) => (
+                      {instructions.map((step: any, index: number) => (
                         <li key={index} className="flex">
                           <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-medium shrink-0 mt-0.5 mr-4">
-                            {index + 1}
+                            {isStepObjectArray ? step.step : index + 1}
                           </div>
                           <div className="pt-1">
-                            <p>{step}</p>
+                            <p>{isStepObjectArray ? step.text : step}</p>
                           </div>
                         </li>
                       ))}
@@ -308,7 +318,10 @@ const RecipeDetail = () => {
                   <div className="bg-secondary/50 rounded-xl p-6 mb-6">
                     <h3 className="font-serif text-lg font-medium mb-3">Chef's Notes</h3>
                     <p className="text-muted-foreground">
-                      This {recipe.title} recipe is authentic to {recipe.cuisine} cuisine. For best results, prepare the batter a day ahead to allow fermentation. The dosa should be crispy on the edges and slightly soft in the center.
+                      This {recipe.title} recipe is authentic to {recipe.cuisine || 'global'} cuisine. 
+                      {recipe.cuisine === 'South Indian' && ' For best results, prepare ingredients ahead of time and follow the cooking process carefully.'}
+                      {recipe.category === 'Baking' && ' Make sure to preheat your oven properly and measure ingredients precisely for best results.'}
+                      {recipe.category === 'Soups & Stews' && ' For the best flavor development, let the soup simmer gently for the full cooking time.'}
                     </p>
                   </div>
 
@@ -325,11 +338,13 @@ const RecipeDetail = () => {
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary mr-2">•</span>
-                        For an authentic taste, use a cast iron pan if available.
+                        {recipe.category === 'Baking' ? 'For consistent results, use a kitchen scale to weigh ingredients.' : 
+                         recipe.category === 'Soups & Stews' ? 'Use homemade broth for extra flavor whenever possible.' :
+                         'For an authentic taste, use traditional cooking methods if available.'}
                       </li>
                       <li className="flex items-start">
                         <span className="text-primary mr-2">•</span>
-                        Garnish with fresh cilantro just before serving.
+                        Garnish with fresh herbs just before serving for extra flavor and presentation.
                       </li>
                     </ul>
                   </div>
@@ -348,22 +363,28 @@ const RecipeDetail = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedRecipes.map((related, index) => (
-                <RecipeCard
-                  key={related.id}
-                  id={related.id}
-                  title={related.title}
-                  image={related.image}
-                  rating={related.rating}
-                  prepTime={related.prepTime}
-                  cookTime={related.cookTime}
-                  servings={related.servings}
-                  chef={related.chef}
-                  category={related.category}
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                />
-              ))}
+              {relatedRecipes.map((related, index) => {
+                // Make sure we handle both camelCase and snake_case properties
+                const relatedPrepTime = related.prepTime || related.prep_time || 0;
+                const relatedCookTime = related.cookTime || related.cook_time || 0;
+                
+                return (
+                  <RecipeCard
+                    key={related.id}
+                    id={related.id}
+                    title={related.title}
+                    image={related.image}
+                    rating={related.rating}
+                    prepTime={relatedPrepTime}
+                    cookTime={relatedCookTime}
+                    servings={related.servings}
+                    chef={related.chef}
+                    category={related.category}
+                    className="animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>
