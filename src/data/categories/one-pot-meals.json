@@ -1,0 +1,173 @@
+
+[
+  {
+    "id": "156",
+    "title": "One-Pan Roasted Sausage and Root Vegetables",
+    "description": "A simple and flavorful meal with sausage and seasonal root vegetables roasted together.",
+    "cuisine": "Global",
+    "category": "One-Pot Meals",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 40,
+    "servings": 4,
+    "tags": ["one-pot", "sheet pan", "sausage", "vegetables", "dinner", "easy"],
+    "ingredients": [
+      { "name": "Smoked Sausage (Kielbasa, Andouille)", "quantity": "1", "unit": "lb" },
+      { "name": "Sweet Potatoes (Cubed)", "quantity": "2", "unit": "medium" },
+      { "name": "Carrots (Chopped)", "quantity": "2", "unit": "" },
+      { "name": "Onion (Wedges)", "quantity": "1", "unit": "" },
+      { "name": "Olive Oil", "quantity": "2", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Preheat oven to 400°F (200°C)." },
+      { "step": 2, "text": "Cut sausage into 1-inch pieces." },
+      { "step": 3, "text": "On a large baking sheet, toss sausage, sweet potatoes, carrots, and onion with olive oil, salt, pepper, and desired herbs (like rosemary or thyme)." },
+      { "step": 4, "text": "Spread everything in a single layer." },
+      { "step": 5, "text": "Roast for 35-45 minutes, flipping halfway through, until vegetables are tender and sausage is browned." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Demo Chef",
+    "user_id": "5",
+    "created_at": "2024-07-30T10:40:00Z",
+    "updated_at": "2024-07-30T10:40:00Z"
+  },
+  {
+    "id": "157",
+    "title": "One-Pot Greek Lemon Chicken and Orzo",
+    "description": "A bright and flavorful dish with chicken, orzo pasta, and Greek seasonings.",
+    "cuisine": "Greek",
+    "category": "One-Pot Meals",
+    "difficulty": "Medium",
+    "prep_time": 15,
+    "cook_time": 30,
+    "servings": 4,
+    "tags": ["one-pot", "chicken", "orzo", "pasta", "greek", "lemon", "dinner"],
+    "ingredients": [
+      { "name": "Chicken Thighs (Boneless, Skinless)", "quantity": "1.5", "unit": "lb" },
+      { "name": "Orzo Pasta", "quantity": "1", "unit": "cup" },
+      { "name": "Chicken Broth", "quantity": "2.5", "unit": "cups" },
+      { "name": "Lemon", "quantity": "1", "unit": "" },
+      { "name": "Dried Oregano", "quantity": "1", "unit": "tsp" },
+      { "name": "Spinach", "quantity": "2", "unit": "cups" },
+      { "name": "Feta Cheese (Crumbled)", "quantity": "1/4", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Cut chicken into bite-sized pieces, season with salt, pepper, oregano." },
+      { "step": 2, "text": "Sear chicken in a large pot or Dutch oven until lightly browned. Remove chicken." },
+      { "step": 3, "text": "Add garlic, sauté briefly. Add orzo, toast for 1 minute." },
+      { "step": 4, "text": "Stir in chicken broth and lemon juice. Bring to a boil." },
+      { "step": 5, "text": "Return chicken to the pot. Reduce heat, cover, simmer until orzo is cooked and liquid is mostly absorbed (about 15-20 mins)." },
+      { "step": 6, "text": "Stir in spinach until wilted. Top with feta cheese before serving." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Chef Niko",
+    "user_id": "5",
+    "created_at": "2024-07-30T10:45:00Z",
+    "updated_at": "2024-07-30T10:45:00Z"
+  },
+  {
+    "id": "158",
+    "title": "One-Pan Spanish Chicken and Rice (Arroz con Pollo)",
+    "description": "A simplified version of the classic Spanish dish, cooked in one pan.",
+    "cuisine": "Spanish",
+    "category": "One-Pot Meals",
+    "difficulty": "Medium",
+    "prep_time": 20,
+    "cook_time": 45,
+    "servings": 4,
+    "tags": ["one-pot", "sheet pan", "chicken", "rice", "spanish", "dinner"],
+    "ingredients": [
+      { "name": "Chicken Thighs (Bone-in, Skin-on)", "quantity": "4", "unit": "" },
+      { "name": "Medium-Grain Rice (like Arborio or Bomba)", "quantity": "1", "unit": "cup" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Red Bell Pepper (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Chicken Broth", "quantity": "2", "unit": "cups" },
+      { "name": "Smoked Paprika", "quantity": "1", "unit": "tsp" },
+      { "name": "Saffron Threads (Optional)", "quantity": "1", "unit": "pinch" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Preheat oven to 375°F (190°C)." },
+      { "step": 2, "text": "Season chicken thighs. Sear skin-side down in an oven-safe skillet until crispy. Remove chicken." },
+      { "step": 3, "text": "Sauté onion and bell pepper in the same skillet." },
+      { "step": 4, "text": "Add garlic, paprika, rice. Toast rice briefly." },
+      { "step": 5, "text": "Stir in broth (infused with saffron if using), diced tomatoes, peas. Bring to a simmer." },
+      { "step": 6, "text": "Nestle chicken thighs back into the rice mixture. Transfer skillet to oven, bake covered for 20 mins, then uncovered for 15-20 mins until rice is cooked and chicken is done." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Chef Sofia",
+    "user_id": "5",
+    "created_at": "2024-07-30T10:50:00Z",
+    "updated_at": "2024-07-30T10:50:00Z"
+  },
+  {
+    "id": "159",
+    "title": "One-Pot Jambalaya",
+    "description": "A flavorful Creole rice dish with sausage, chicken (optional), and shrimp cooked together.",
+    "cuisine": "Creole",
+    "category": "One-Pot Meals",
+    "difficulty": "Medium",
+    "prep_time": 20,
+    "cook_time": 40,
+    "servings": 6,
+    "tags": ["one-pot", "rice", "sausage", "shrimp", "creole", "cajun", "dinner"],
+    "ingredients": [
+      { "name": "Andouille Sausage (Sliced)", "quantity": "12", "unit": "oz" },
+      { "name": "Chicken Thighs (Optional, Cubed)", "quantity": "1", "unit": "lb" },
+      { "name": "Onion, Celery, Bell Pepper (Holy Trinity, Chopped)", "quantity": "1", "unit": "cup each" },
+      { "name": "Long-grain Rice", "quantity": "1.5", "unit": "cups" },
+      { "name": "Chicken Broth", "quantity": "3", "unit": "cups" },
+      { "name": "Diced Tomatoes (Canned)", "quantity": "1", "unit": "can (15oz)" },
+      { "name": "Shrimp (Peeled)", "quantity": "1", "unit": "lb" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Brown sausage (and chicken if using) in a large Dutch oven. Remove meat." },
+      { "step": 2, "text": "Sauté onion, celery, and bell pepper until softened." },
+      { "step": 3, "text": "Add garlic, Cajun/Creole seasoning, rice. Toast rice." },
+      { "step": 4, "text": "Stir in broth, diced tomatoes, Worcestershire sauce, hot sauce. Return sausage/chicken to pot." },
+      { "step": 5, "text": "Bring to a boil, reduce heat, cover, simmer for 20-25 minutes until rice is almost cooked." },
+      { "step": 6, "text": "Stir in shrimp, cover, cook for another 5-7 minutes until shrimp are pink and cooked through. Fluff rice before serving." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.8,
+    "chef": "Chef Antoine",
+    "user_id": "5",
+    "created_at": "2024-07-30T10:55:00Z",
+    "updated_at": "2024-07-30T10:55:00Z"
+  },
+  {
+    "id": "160",
+    "title": "One-Pot Mushroom Stroganoff",
+    "description": "A creamy, savory mushroom and noodle dish cooked in a single pot.",
+    "cuisine": "Russian-American",
+    "category": "One-Pot Meals",
+    "difficulty": "Easy",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": ["one-pot", "pasta", "mushroom", "vegetarian", "comfort food", "easy", "dinner"],
+    "ingredients": [
+      { "name": "Mushrooms (Sliced)", "quantity": "1", "unit": "lb" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Egg Noodles", "quantity": "8", "unit": "oz" },
+      { "name": "Vegetable Broth", "quantity": "3", "unit": "cups" },
+      { "name": "Sour Cream or Greek Yogurt", "quantity": "1/2", "unit": "cup" },
+      { "name": "Dijon Mustard", "quantity": "1", "unit": "tsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Sauté mushrooms and onions in butter or oil in a large pot until browned and softened." },
+      { "step": 2, "text": "Add garlic, paprika, thyme. Cook for 1 minute." },
+      { "step": 3, "text": "Stir in vegetable broth, Dijon mustard, Worcestershire sauce (optional), salt, pepper, and egg noodles." },
+      { "step": 4, "text": "Bring to a simmer, cover, cook until noodles are tender (about 10-12 minutes), stirring occasionally." },
+      { "step": 5, "text": "Remove from heat. Stir in sour cream or Greek yogurt and fresh parsley." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Demo Chef",
+    "user_id": "5",
+    "created_at": "2024-07-30T11:00:00Z",
+    "updated_at": "2024-07-30T11:00:00Z"
+  }
+]

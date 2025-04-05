@@ -1,0 +1,202 @@
+
+[
+  {
+    "id": "101",
+    "title": "Homemade Masala Dosa",
+    "description": "A delicious South Indian breakfast dish.",
+    "cuisine": "South Indian",
+    "category": "Breakfast",
+    "difficulty": "Medium",
+    "prep_time": 30,
+    "cook_time": 15,
+    "servings": 4,
+    "tags": ["vegetarian", "indian", "breakfast"],
+    "ingredients": [
+      {
+        "name": "Rice",
+        "quantity": "2",
+        "unit": "cups"
+      },
+      {
+        "name": "Urad dal",
+        "quantity": "1",
+        "unit": "cup"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "text": "Soak rice and urad dal overnight."
+      },
+      {
+        "step": 2,
+        "text": "Grind to make a batter and ferment."
+      }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Demo User",
+    "user_id": "1",
+    "created_at": "2023-04-02T10:00:00Z",
+    "updated_at": "2023-04-02T10:00:00Z"
+  },
+  {
+    "id": "136",
+    "title": "Medu Vada (Savory Lentil Donuts)",
+    "description": "Crispy on the outside, soft on the inside South Indian lentil fritters.",
+    "cuisine": "South Indian",
+    "category": "Breakfast",
+    "difficulty": "Medium",
+    "prep_time": 30,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": ["south indian", "breakfast", "snack", "vegetarian", "fritter", "vada"],
+    "ingredients": [
+      { "name": "Urad Dal", "quantity": "1", "unit": "cup" },
+      { "name": "Onion (Finely Chopped)", "quantity": "1/4", "unit": "cup" },
+      { "name": "Green Chilies (Minced)", "quantity": "2", "unit": "" },
+      { "name": "Ginger (Grated)", "quantity": "1", "unit": "tsp" },
+      { "name": "Oil", "quantity": "", "unit": "for deep frying" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Soak urad dal for 2 hours. Drain well." },
+      { "step": 2, "text": "Grind dal to a thick, fluffy batter with minimal water." },
+      { "step": 3, "text": "Mix in onion, chilies, ginger, curry leaves, salt, pepper." },
+      { "step": 4, "text": "Wet hands, shape batter into donut shapes (with a hole in the center)." },
+      { "step": 5, "text": "Deep fry in hot oil until golden brown and crispy." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Chef Kumar",
+    "user_id": "1",
+    "created_at": "2024-07-30T09:00:00Z",
+    "updated_at": "2024-07-30T09:00:00Z"
+  },
+  {
+    "id": "137",
+    "title": "Kerala Style Fish Curry (Meen Curry)",
+    "description": "A tangy and spicy fish curry cooked in coconut milk, typical of Kerala cuisine.",
+    "cuisine": "South Indian",
+    "category": "Main Course",
+    "difficulty": "Medium",
+    "prep_time": 20,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": ["south indian", "kerala", "fish", "curry", "coconut milk", "spicy"],
+    "ingredients": [
+      { "name": "Fish Fillets (Kingfish, Pomfret)", "quantity": "500", "unit": "g" },
+      { "name": "Coconut Milk (Thick)", "quantity": "1", "unit": "cup" },
+      { "name": "Shallots (Sliced)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Kudampuli (Fish Tamarind)", "quantity": "2-3", "unit": "pieces" },
+      { "name": "Chili Powder", "quantity": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Soak kudampuli in warm water." },
+      { "step": 2, "text": "Sauté shallots, ginger, garlic, green chilies." },
+      { "step": 3, "text": "Add spice powders (chili, turmeric, coriander). Sauté briefly." },
+      { "step": 4, "text": "Add thin coconut milk, soaked kudampuli, salt. Bring to a simmer." },
+      { "step": 5, "text": "Add fish pieces, cook until done. Finish with thick coconut milk and curry leaves tempering." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.8,
+    "chef": "Chef Lakshmi",
+    "user_id": "1",
+    "created_at": "2024-07-30T09:05:00Z",
+    "updated_at": "2024-07-30T09:05:00Z"
+  },
+  {
+    "id": "138",
+    "title": "Bisi Bele Bath",
+    "description": "A flavorful Karnataka dish made with rice, lentils, vegetables, and a special spice powder.",
+    "cuisine": "South Indian",
+    "category": "Main Course",
+    "difficulty": "Medium",
+    "prep_time": 25,
+    "cook_time": 40,
+    "servings": 4,
+    "tags": ["south indian", "karnataka", "rice", "lentil", "one-pot", "vegetarian"],
+    "ingredients": [
+      { "name": "Rice", "quantity": "1", "unit": "cup" },
+      { "name": "Toor Dal", "quantity": "1/2", "unit": "cup" },
+      { "name": "Mixed Vegetables", "quantity": "2", "unit": "cups" },
+      { "name": "Bisi Bele Bath Powder", "quantity": "3", "unit": "tbsp" },
+      { "name": "Tamarind Pulp", "quantity": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Cook rice and dal together until mushy." },
+      { "step": 2, "text": "Cook vegetables separately until tender." },
+      { "step": 3, "text": "Mix cooked rice/dal, vegetables, tamarind pulp, Bisi Bele Bath powder, salt, jaggery." },
+      { "step": 4, "text": "Add water to adjust consistency, simmer for 10 minutes." },
+      { "step": 5, "text": "Prepare tempering (ghee, mustard seeds, curry leaves, cashews) and add to the dish." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Chef Rao",
+    "user_id": "1",
+    "created_at": "2024-07-30T09:10:00Z",
+    "updated_at": "2024-07-30T09:10:00Z"
+  },
+  {
+    "id": "139",
+    "title": "Pesarattu (Green Moong Dal Dosa)",
+    "description": "A healthy dosa variation made from green moong dal, popular in Andhra Pradesh.",
+    "cuisine": "South Indian",
+    "category": "Breakfast",
+    "difficulty": "Medium",
+    "prep_time": 15,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": ["south indian", "andhra", "dosa", "breakfast", "vegetarian", "healthy", "lentil"],
+    "ingredients": [
+      { "name": "Whole Green Moong Dal", "quantity": "1", "unit": "cup" },
+      { "name": "Rice", "quantity": "2", "unit": "tbsp" },
+      { "name": "Ginger", "quantity": "1", "unit": "inch piece" },
+      { "name": "Green Chilies", "quantity": "3", "unit": "" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Soak green moong dal and rice overnight or for 6-8 hours." },
+      { "step": 2, "text": "Grind soaked dal, rice, ginger, green chilies, cumin seeds, salt to a smooth batter (add water as needed)." },
+      { "step": 3, "text": "Optionally mix in finely chopped onions." },
+      { "step": 4, "text": "Heat a tawa (griddle), pour a ladleful of batter, and spread thinly like a dosa." },
+      { "step": 5, "text": "Drizzle oil/ghee, cook until crisp and golden brown. Serve hot with chutney." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Chef Reddy",
+    "user_id": "1",
+    "created_at": "2024-07-30T09:15:00Z",
+    "updated_at": "2024-07-30T09:15:00Z"
+  },
+  {
+    "id": "140",
+    "title": "Avial (Mixed Vegetable Coconut Stew)",
+    "description": "A traditional Kerala dish with mixed vegetables cooked in a coconut-yogurt base.",
+    "cuisine": "South Indian",
+    "category": "Side Dish",
+    "difficulty": "Medium",
+    "prep_time": 25,
+    "cook_time": 20,
+    "servings": 4,
+    "tags": ["south indian", "kerala", "vegetarian", "vegetable", "coconut", "healthy", "stew"],
+    "ingredients": [
+      { "name": "Mixed Vegetables (Yam, Plantain, Drumstick, Carrot, Beans)", "quantity": "3", "unit": "cups" },
+      { "name": "Grated Coconut", "quantity": "1", "unit": "cup" },
+      { "name": "Yogurt (Slightly Sour)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Green Chilies", "quantity": "4", "unit": "" },
+      { "name": "Coconut Oil", "quantity": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Cut vegetables into thick, long strips." },
+      { "step": 2, "text": "Cook vegetables with turmeric powder and salt until just tender (don't overcook)." },
+      { "step": 3, "text": "Grind coconut, green chilies, and cumin seeds to a coarse paste." },
+      { "step": 4, "text": "Add coconut paste to cooked vegetables, mix well, cook for 2 minutes." },
+      { "step": 5, "text": "Whisk yogurt and add it to the mixture. Heat gently (don't boil). Finish with coconut oil and curry leaves." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Chef Lakshmi",
+    "user_id": "1",
+    "created_at": "2024-07-30T09:20:00Z",
+    "updated_at": "2024-07-30T09:20:00Z"
+  }
+]

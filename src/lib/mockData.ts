@@ -1,50 +1,10 @@
 
 import { adaptRecipeToUI, getRecipes, getRecipeById as getRecipeByIdService, getRecipesByUserId } from "@/services/jsonDataService";
+import { getAllCategorizedRecipes, getRecipesByCategory as getCategoryRecipes, categories } from "@/services/categoryService";
 import type { RecipeUI } from "@/services/jsonDataService";
 
 // Re-export the recipe categories
-export const categories = [
-  {
-    title: "South Indian",
-    slug: "south-indian",
-    icon: "🍛"
-  },
-  {
-    title: "Baking",
-    slug: "baking",
-    icon: "🍞"
-  },
-  {
-    title: "Quick Dinners",
-    slug: "quick-dinners",
-    icon: "⏱️"
-  },
-  {
-    title: "Beverages",
-    slug: "beverages",
-    icon: "🍹"
-  },
-  {
-    title: "One-Pot Meals",
-    slug: "one-pot-meals",
-    icon: "🍲"
-  },
-  {
-    title: "Soups & Stews",
-    slug: "soups-stews",
-    icon: "🥣"
-  },
-  {
-    title: "Vegetarian",
-    slug: "vegetarian",
-    icon: "🥗"
-  },
-  {
-    title: "Desserts",
-    slug: "desserts",
-    icon: "🍰"
-  }
-];
+export { categories };
 
 // Placeholder image URLs (since we don't have actual image files)
 const placeholderImage = "https://placehold.co/600x400?text=Recipe+Image";
@@ -142,15 +102,12 @@ export const trendingIngredients = {
 };
 
 // Use our adapter functions to get recipes
-export const featuredRecipes: RecipeUI[] = getRecipes().slice(0, 6);
-export const southIndianRecipes: RecipeUI[] = getRecipes().filter(recipe => 
-  recipe.cuisine === "South Indian" || 
-  (recipe.tags && recipe.tags.includes("south indian"))
-);
+export const featuredRecipes: RecipeUI[] = getAllCategorizedRecipes().slice(0, 6);
+export const southIndianRecipes: RecipeUI[] = getCategoryRecipes('south-indian');
 
 // Helper function to get all recipes
 export const getAllRecipes = (): RecipeUI[] => {
-  return getRecipes();
+  return getAllCategorizedRecipes();
 };
 
 // Helper function to get a recipe by its ID
@@ -161,23 +118,13 @@ export const getRecipeById = (id: string): RecipeUI | null => {
 // Helper function to get recipes by category
 export const getRecipesByCategory = (category: string): RecipeUI[] => {
   const normalizedCategory = category.toLowerCase().replace(/\s+/g, '-');
-  return getRecipes().filter((recipe) => {
-    // Check in category field
-    if (recipe.category && recipe.category.toLowerCase().replace(/\s+/g, '-') === normalizedCategory) {
-      return true;
-    }
-    // Check in tags
-    if (recipe.tags && recipe.tags.some((tag) => tag.toLowerCase().replace(/\s+/g, '-') === normalizedCategory)) {
-      return true;
-    }
-    return false;
-  });
+  return getCategoryRecipes(normalizedCategory);
 };
 
 // Helper function to search recipes
 export const searchRecipes = (query: string): RecipeUI[] => {
   const normalizedQuery = query.toLowerCase().trim();
-  return getRecipes().filter((recipe) => {
+  return getAllCategorizedRecipes().filter((recipe) => {
     // Search in title
     if (recipe.title.toLowerCase().includes(normalizedQuery)) {
       return true;

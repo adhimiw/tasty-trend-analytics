@@ -1,0 +1,172 @@
+
+[
+  {
+    "id": "141",
+    "title": "Chocolate Chip Cookies",
+    "description": "The ultimate classic cookie, soft and chewy with plenty of chocolate chips.",
+    "cuisine": "American",
+    "category": "Baking",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 12,
+    "servings": 24,
+    "tags": ["baking", "cookie", "chocolate chip", "dessert", "classic", "easy"],
+    "ingredients": [
+      { "name": "All-purpose Flour", "quantity": "2.25", "unit": "cups" },
+      { "name": "Butter (Softened)", "quantity": "1", "unit": "cup" },
+      { "name": "Brown Sugar", "quantity": "3/4", "unit": "cup" },
+      { "name": "Granulated Sugar", "quantity": "1/4", "unit": "cup" },
+      { "name": "Eggs", "quantity": "2", "unit": "" },
+      { "name": "Chocolate Chips", "quantity": "2", "unit": "cups" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Preheat oven to 375°F (190°C)." },
+      { "step": 2, "text": "Cream butter and sugars together until light and fluffy." },
+      { "step": 3, "text": "Beat in eggs one at a time, then stir in vanilla." },
+      { "step": 4, "text": "Combine flour, baking soda, and salt; gradually add to wet ingredients." },
+      { "step": 5, "text": "Stir in chocolate chips." },
+      { "step": 6, "text": "Drop rounded tablespoons onto ungreased baking sheets. Bake for 9-12 minutes." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.8,
+    "chef": "Baker Ben",
+    "user_id": "2",
+    "created_at": "2024-07-30T09:25:00Z",
+    "updated_at": "2024-07-30T09:25:00Z"
+  },
+  {
+    "id": "142",
+    "title": "Homemade Pizza Dough",
+    "description": "A basic recipe for making your own pizza crust from scratch.",
+    "cuisine": "Italian",
+    "category": "Baking",
+    "difficulty": "Easy",
+    "prep_time": 20,
+    "cook_time": 15,
+    "servings": 8,
+    "tags": ["baking", "pizza", "dough", "italian", "easy"],
+    "ingredients": [
+      { "name": "Warm Water", "quantity": "1.5", "unit": "cups" },
+      { "name": "Active Dry Yeast", "quantity": "2.25", "unit": "tsp" },
+      { "name": "All-purpose or Bread Flour", "quantity": "3.5", "unit": "cups" },
+      { "name": "Olive Oil", "quantity": "2", "unit": "tbsp" },
+      { "name": "Salt", "quantity": "1", "unit": "tsp" },
+      { "name": "Sugar", "quantity": "1", "unit": "tsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Dissolve yeast and sugar in warm water. Let sit for 5 minutes until foamy." },
+      { "step": 2, "text": "In a large bowl, combine flour and salt. Add yeast mixture and olive oil." },
+      { "step": 3, "text": "Mix until a dough forms. Knead on a floured surface for 5-7 minutes until smooth." },
+      { "step": 4, "text": "Place dough in an oiled bowl, cover, and let rise in a warm place for 1-1.5 hours, or until doubled." },
+      { "step": 5, "text": "Punch down dough, divide if needed, and shape for pizza." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Baker Ben",
+    "user_id": "2",
+    "created_at": "2024-07-30T09:30:00Z",
+    "updated_at": "2024-07-30T09:30:00Z"
+  },
+  {
+    "id": "143",
+    "title": "Classic Scones",
+    "description": "Light and tender British scones, perfect served with jam and clotted cream.",
+    "cuisine": "British",
+    "category": "Baking",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 15,
+    "servings": 8,
+    "tags": ["baking", "scone", "british", "afternoon tea", "breakfast", "easy"],
+    "ingredients": [
+      { "name": "All-purpose Flour", "quantity": "2", "unit": "cups" },
+      { "name": "Sugar", "quantity": "1/4", "unit": "cup" },
+      { "name": "Baking Powder", "quantity": "1", "unit": "tbsp" },
+      { "name": "Butter (Cold, Cubed)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Milk or Buttermilk", "quantity": "1/2", "unit": "cup" },
+      { "name": "Egg", "quantity": "1", "unit": "" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Preheat oven to 400°F (200°C)." },
+      { "step": 2, "text": "Whisk flour, sugar, baking powder, and salt." },
+      { "step": 3, "text": "Cut in cold butter using a pastry blender or fingers until mixture resembles coarse crumbs." },
+      { "step": 4, "text": "In a small bowl, whisk milk and egg. Add to dry ingredients, mixing until just combined." },
+      { "step": 5, "text": "Turn dough onto a lightly floured surface, pat to 1-inch thickness. Cut out rounds with a cutter." },
+      { "step": 6, "text": "Place on baking sheet, brush tops with milk. Bake for 12-15 minutes." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Granny's Kitchen",
+    "user_id": "2",
+    "created_at": "2024-07-30T09:35:00Z",
+    "updated_at": "2024-07-30T09:35:00Z"
+  },
+  {
+    "id": "144",
+    "title": "Fudgy Brownies",
+    "description": "Rich, dense, and intensely chocolatey brownies.",
+    "cuisine": "American",
+    "category": "Baking",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 30,
+    "servings": 16,
+    "tags": ["baking", "brownie", "chocolate", "dessert", "fudgy", "easy"],
+    "ingredients": [
+      { "name": "Unsalted Butter", "quantity": "1/2", "unit": "cup" },
+      { "name": "Granulated Sugar", "quantity": "1", "unit": "cup" },
+      { "name": "Eggs", "quantity": "2", "unit": "" },
+      { "name": "Vanilla Extract", "quantity": "1", "unit": "tsp" },
+      { "name": "Unsweetened Cocoa Powder", "quantity": "1/2", "unit": "cup" },
+      { "name": "All-purpose Flour", "quantity": "1/2", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Preheat oven to 325°F (165°C). Grease and flour an 8x8 inch pan." },
+      { "step": 2, "text": "Melt butter. Remove from heat, stir in sugar, eggs, and vanilla." },
+      { "step": 3, "text": "Whisk in cocoa powder, flour, salt, and baking powder (if using)." },
+      { "step": 4, "text": "Pour batter into prepared pan. Optional: stir in chocolate chips or nuts." },
+      { "step": 5, "text": "Bake for 25-30 minutes, or until a toothpick inserted near the center comes out with moist crumbs." },
+      { "step": 6, "text": "Let cool completely before cutting." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Baker Ben",
+    "user_id": "2",
+    "created_at": "2024-07-30T09:40:00Z",
+    "updated_at": "2024-07-30T09:40:00Z"
+  },
+  {
+    "id": "145",
+    "title": "Simple White Bread Loaf",
+    "description": "A basic recipe for a soft, homemade white bread loaf.",
+    "cuisine": "Global",
+    "category": "Baking",
+    "difficulty": "Easy",
+    "prep_time": 20,
+    "cook_time": 30,
+    "servings": 12,
+    "tags": ["baking", "bread", "white bread", "homemade", "easy"],
+    "ingredients": [
+      { "name": "Warm Water", "quantity": "1", "unit": "cup" },
+      { "name": "Active Dry Yeast", "quantity": "2.25", "unit": "tsp" },
+      { "name": "Sugar", "quantity": "2", "unit": "tbsp" },
+      { "name": "Salt", "quantity": "1.5", "unit": "tsp" },
+      { "name": "Vegetable Oil", "quantity": "2", "unit": "tbsp" },
+      { "name": "All-purpose or Bread Flour", "quantity": "3", "unit": "cups" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Dissolve yeast and 1 tsp sugar in warm water. Let proof for 5-10 minutes." },
+      { "step": 2, "text": "In a large bowl, combine remaining sugar, salt, oil, and proofed yeast mixture." },
+      { "step": 3, "text": "Gradually add flour, mixing until dough comes together. Knead for 6-8 minutes until smooth and elastic." },
+      { "step": 4, "text": "Place dough in oiled bowl, cover, let rise until doubled (about 1 hour)." },
+      { "step": 5, "text": "Punch down dough, shape into a loaf, place in greased loaf pan. Let rise again until doubled (about 30-45 mins)." },
+      { "step": 6, "text": "Bake at 375°F (190°C) for 25-30 minutes until golden brown." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.4,
+    "chef": "Baker Ben",
+    "user_id": "2",
+    "created_at": "2024-07-30T09:45:00Z",
+    "updated_at": "2024-07-30T09:45:00Z"
+  }
+]

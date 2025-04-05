@@ -1,0 +1,171 @@
+
+[
+  {
+    "id": "161",
+    "title": "Butternut Squash Soup",
+    "description": "A creamy, velvety soup made from roasted butternut squash.",
+    "cuisine": "Global",
+    "category": "Soups & Stews",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 45,
+    "servings": 6,
+    "tags": ["soup", "squash", "butternut squash", "vegetarian", "vegan option", "healthy", "fall"],
+    "ingredients": [
+      { "name": "Butternut Squash", "quantity": "1", "unit": "medium" },
+      { "name": "Onion", "quantity": "1", "unit": "" },
+      { "name": "Vegetable Broth", "quantity": "4", "unit": "cups" },
+      { "name": "Apple (Optional, for sweetness)", "quantity": "1", "unit": "" },
+      { "name": "Heavy Cream or Coconut Milk (Optional)", "quantity": "1/4", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Peel, seed, and cube butternut squash. Chop onion and apple." },
+      { "step": 2, "text": "Roast squash cubes until tender OR sauté onion, apple, and squash in a pot." },
+      { "step": 3, "text": "Add vegetable broth, sage/thyme, salt, pepper. Bring to a simmer and cook until squash is very tender." },
+      { "step": 4, "text": "Carefully blend the soup using an immersion blender or regular blender until smooth." },
+      { "step": 5, "text": "Return to pot, stir in cream/coconut milk (if using). Heat gently. Adjust seasoning." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Healthy Homemaker",
+    "user_id": "6",
+    "created_at": "2024-07-30T11:05:00Z",
+    "updated_at": "2024-07-30T11:05:00Z"
+  },
+  {
+    "id": "162",
+    "title": "Classic Beef Stew",
+    "description": "A hearty and comforting stew with tender beef and vegetables in a rich gravy.",
+    "cuisine": "American",
+    "category": "Soups & Stews",
+    "difficulty": "Medium",
+    "prep_time": 25,
+    "cook_time": 120,
+    "servings": 6,
+    "tags": ["stew", "beef", "comfort food", "hearty", "winter"],
+    "ingredients": [
+      { "name": "Beef Stew Meat (Cubed)", "quantity": "2", "unit": "lb" },
+      { "name": "Carrots (Chopped)", "quantity": "3", "unit": "" },
+      { "name": "Potatoes (Cubed)", "quantity": "3", "unit": "medium" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "large" },
+      { "name": "Beef Broth", "quantity": "4", "unit": "cups" },
+      { "name": "Tomato Paste", "quantity": "2", "unit": "tbsp" },
+      { "name": "Flour", "quantity": "1/4", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Toss beef cubes with flour, salt, and pepper." },
+      { "step": 2, "text": "Brown beef in batches in a large pot or Dutch oven. Remove beef." },
+      { "step": 3, "text": "Sauté onion, carrots, celery until softened." },
+      { "step": 4, "text": "Stir in tomato paste and cook for 1 minute. Deglaze with red wine or broth." },
+      { "step": 5, "text": "Return beef to pot. Add broth, bay leaf, thyme. Bring to a simmer, cover, cook on low for 1.5 hours." },
+      { "step": 6, "text": "Add potatoes, continue simmering until beef and potatoes are tender (about 30-45 more minutes)." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.8,
+    "chef": "Home Cook Alex",
+    "user_id": "6",
+    "created_at": "2024-07-30T11:10:00Z",
+    "updated_at": "2024-07-30T11:10:00Z"
+  },
+  {
+    "id": "163",
+    "title": "Minestrone Soup",
+    "description": "A thick Italian soup packed with vegetables, beans, and pasta.",
+    "cuisine": "Italian",
+    "category": "Soups & Stews",
+    "difficulty": "Easy",
+    "prep_time": 20,
+    "cook_time": 35,
+    "servings": 6,
+    "tags": ["soup", "italian", "vegetarian", "vegetable", "beans", "pasta", "healthy"],
+    "ingredients": [
+      { "name": "Mixed Vegetables (Carrot, Celery, Zucchini, Green Beans)", "quantity": "3", "unit": "cups" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Diced Tomatoes (Canned)", "quantity": "1", "unit": "can (28oz)" },
+      { "name": "Kidney Beans (Canned, Rinsed)", "quantity": "1", "unit": "can (15oz)" },
+      { "name": "Small Pasta (like Ditalini)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Vegetable Broth", "quantity": "6", "unit": "cups" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Sauté onion, carrots, and celery in olive oil in a large pot." },
+      { "step": 2, "text": "Add garlic, zucchini, green beans. Cook for a few more minutes." },
+      { "step": 3, "text": "Stir in diced tomatoes, vegetable broth, kidney beans, Italian seasoning, salt, pepper." },
+      { "step": 4, "text": "Bring to a boil, then simmer for 15-20 minutes until vegetables are tender." },
+      { "step": 5, "text": "Add pasta and cook according to package directions until al dente." },
+      { "step": 6, "text": "Optional: Stir in spinach or kale until wilted. Serve topped with Parmesan cheese." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "Chef Isabella",
+    "user_id": "6",
+    "created_at": "2024-07-30T11:15:00Z",
+    "updated_at": "2024-07-30T11:15:00Z"
+  },
+  {
+    "id": "164",
+    "title": "Creamy Mushroom Soup",
+    "description": "A rich and elegant soup made with fresh mushrooms.",
+    "cuisine": "Global",
+    "category": "Soups & Stews",
+    "difficulty": "Easy",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": ["soup", "mushroom", "creamy", "vegetarian"],
+    "ingredients": [
+      { "name": "Mushrooms (Cremini or Button, Sliced)", "quantity": "1", "unit": "lb" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Vegetable Broth", "quantity": "4", "unit": "cups" },
+      { "name": "Heavy Cream", "quantity": "1/2", "unit": "cup" },
+      { "name": "Butter", "quantity": "2", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Melt butter in a pot. Sauté onions until soft." },
+      { "step": 2, "text": "Add mushrooms and cook until browned and liquid has evaporated." },
+      { "step": 3, "text": "Stir in garlic and thyme. Cook for 1 minute." },
+      { "step": 4, "text": "Pour in vegetable broth, bring to a simmer, cook for 15 minutes." },
+      { "step": 5, "text": "Blend part or all of the soup until smooth (using immersion or regular blender)." },
+      { "step": 6, "text": "Return to pot, stir in heavy cream. Heat gently. Season with salt and pepper." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Home Cook Alex",
+    "user_id": "6",
+    "created_at": "2024-07-30T11:20:00Z",
+    "updated_at": "2024-07-30T11:20:00Z"
+  },
+  {
+    "id": "165",
+    "title": "Spicy Black Bean Soup",
+    "description": "A flavorful and hearty soup with black beans and a touch of spice.",
+    "cuisine": "Southwestern",
+    "category": "Soups & Stews",
+    "difficulty": "Easy",
+    "prep_time": 10,
+    "cook_time": 25,
+    "servings": 4,
+    "tags": ["soup", "beans", "black beans", "vegetarian", "vegan option", "spicy", "healthy", "easy"],
+    "ingredients": [
+      { "name": "Black Beans (Canned, Rinsed)", "quantity": "2", "unit": "cans (15oz each)" },
+      { "name": "Onion (Chopped)", "quantity": "1", "unit": "" },
+      { "name": "Vegetable Broth", "quantity": "4", "unit": "cups" },
+      { "name": "Cumin", "quantity": "1", "unit": "tsp" },
+      { "name": "Chili Powder", "quantity": "1/2", "unit": "tsp" },
+      { "name": "Optional Toppings: Sour Cream, Avocado, Cilantro, Tortilla Strips", "quantity": "", "unit": "" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Sauté onion and garlic in a pot until softened." },
+      { "step": 2, "text": "Stir in cumin, chili powder, oregano." },
+      { "step": 3, "text": "Add black beans and vegetable broth. Bring to a simmer." },
+      { "step": 4, "text": "Cook for 15-20 minutes." },
+      { "step": 5, "text": "Optional: Blend about 1-2 cups of the soup to make it creamier, then return to the pot." },
+      { "step": 6, "text": "Adjust seasoning, serve hot with desired toppings." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "Chef Carlos",
+    "user_id": "6",
+    "created_at": "2024-07-30T11:25:00Z",
+    "updated_at": "2024-07-30T11:25:00Z"
+  }
+]

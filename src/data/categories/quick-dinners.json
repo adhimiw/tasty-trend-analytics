@@ -1,0 +1,163 @@
+
+[
+  {
+    "id": "146",
+    "title": "Black Bean and Corn Salsa Salad",
+    "description": "A quick, vibrant salad or dip that's perfect for potlucks or a light lunch.",
+    "cuisine": "Southwestern",
+    "category": "Quick Dinners",
+    "difficulty": "Easy",
+    "prep_time": 15,
+    "cook_time": 0,
+    "servings": 6,
+    "tags": ["quick", "salad", "beans", "corn", "vegetarian", "vegan", "healthy", "easy"],
+    "ingredients": [
+      { "name": "Black Beans (Canned, Rinsed)", "quantity": "1", "unit": "can (15oz)" },
+      { "name": "Corn (Canned or Frozen, Thawed)", "quantity": "1", "unit": "can (15oz)" },
+      { "name": "Red Onion (Finely Diced)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Red Bell Pepper (Diced)", "quantity": "1", "unit": "" },
+      { "name": "Cilantro (Chopped)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Lime Juice", "quantity": "1/4", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Combine black beans, corn, red onion, and red bell pepper in a large bowl." },
+      { "step": 2, "text": "In a small bowl, whisk together lime juice, olive oil, cumin, salt, and pepper." },
+      { "step": 3, "text": "Pour dressing over the bean and corn mixture. Stir in chopped cilantro." },
+      { "step": 4, "text": "Chill for at least 15 minutes before serving to allow flavors to meld. Serve as a salad or with tortilla chips." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.6,
+    "chef": "QuickCook Pro",
+    "user_id": "3",
+    "created_at": "2024-07-30T09:50:00Z",
+    "updated_at": "2024-07-30T09:50:00Z"
+  },
+  {
+    "id": "147",
+    "title": "Speedy Tuna Melts",
+    "description": "Classic comfort food: creamy tuna salad on toast topped with melted cheese.",
+    "cuisine": "American",
+    "category": "Quick Dinners",
+    "difficulty": "Easy",
+    "prep_time": 10,
+    "cook_time": 10,
+    "servings": 2,
+    "tags": ["quick", "sandwich", "tuna", "comfort food", "easy", "lunch"],
+    "ingredients": [
+      { "name": "Tuna (Canned, Drained)", "quantity": "1", "unit": "can (5oz)" },
+      { "name": "Mayonnaise", "quantity": "2-3", "unit": "tbsp" },
+      { "name": "Celery (Finely Chopped)", "quantity": "1", "unit": "stalk" },
+      { "name": "Bread Slices", "quantity": "4", "unit": "" },
+      { "name": "Cheese Slices (Cheddar, Swiss)", "quantity": "2-4", "unit": "" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "In a bowl, mix tuna, mayonnaise, celery, salt, and pepper." },
+      { "step": 2, "text": "Toast bread slices lightly." },
+      { "step": 3, "text": "Spread tuna mixture evenly over two slices of toast." },
+      { "step": 4, "text": "Top with cheese slices." },
+      { "step": 5, "text": "Broil or toast in a toaster oven until cheese is melted and bubbly." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.3,
+    "chef": "QuickCook Pro",
+    "user_id": "3",
+    "created_at": "2024-07-30T09:55:00Z",
+    "updated_at": "2024-07-30T09:55:00Z"
+  },
+  {
+    "id": "148",
+    "title": "20-Minute Lemon Butter Pan-Seared Salmon",
+    "description": "Flaky salmon cooked quickly in a delicious lemon butter sauce.",
+    "cuisine": "Global",
+    "category": "Quick Dinners",
+    "difficulty": "Easy",
+    "prep_time": 5,
+    "cook_time": 15,
+    "servings": 2,
+    "tags": ["quick", "dinner", "salmon", "seafood", "healthy", "easy"],
+    "ingredients": [
+      { "name": "Salmon Fillets (Skin-on or off)", "quantity": "2", "unit": "(6oz each)" },
+      { "name": "Butter", "quantity": "2", "unit": "tbsp" },
+      { "name": "Garlic (Minced)", "quantity": "2", "unit": "cloves" },
+      { "name": "Lemon Juice", "quantity": "2", "unit": "tbsp" },
+      { "name": "Fresh Parsley (Chopped)", "quantity": "1", "unit": "tbsp" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Pat salmon fillets dry, season with salt and pepper." },
+      { "step": 2, "text": "Heat olive oil in a skillet over medium-high heat. Place salmon skin-side down (if using skin) and cook for 4-6 minutes until crispy." },
+      { "step": 3, "text": "Flip salmon, reduce heat to medium. Add butter to the pan." },
+      { "step": 4, "text": "Once butter melts, add garlic and cook until fragrant (about 30 seconds)." },
+      { "step": 5, "text": "Stir in lemon juice and parsley. Baste salmon with the sauce. Cook for another 2-4 minutes until salmon is cooked through." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.8,
+    "chef": "Chef Julia",
+    "user_id": "3",
+    "created_at": "2024-07-30T10:00:00Z",
+    "updated_at": "2024-07-30T10:00:00Z"
+  },
+  {
+    "id": "149",
+    "title": "Quick Veggie Quesadillas",
+    "description": "Cheesy quesadillas filled with vegetables, ready in minutes.",
+    "cuisine": "Mexican-American",
+    "category": "Quick Dinners",
+    "difficulty": "Easy",
+    "prep_time": 10,
+    "cook_time": 10,
+    "servings": 2,
+    "tags": ["quick", "dinner", "lunch", "quesadilla", "vegetarian", "easy", "cheese"],
+    "ingredients": [
+      { "name": "Flour Tortillas", "quantity": "4", "unit": "medium" },
+      { "name": "Shredded Cheese (Monterey Jack, Cheddar)", "quantity": "1", "unit": "cup" },
+      { "name": "Black Beans (Canned, Rinsed)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Corn (Canned or Frozen)", "quantity": "1/2", "unit": "cup" },
+      { "name": "Bell Pepper (Finely Diced)", "quantity": "1/4", "unit": "cup" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Heat a large skillet or griddle over medium heat." },
+      { "step": 2, "text": "Place one tortilla in the skillet. Sprinkle half of it with cheese, beans, corn, and bell pepper." },
+      { "step": 3, "text": "Fold the other half of the tortilla over the filling." },
+      { "step": 4, "text": "Cook for 2-4 minutes per side, until golden brown and cheese is melted." },
+      { "step": 5, "text": "Repeat with remaining tortillas and filling. Cut into wedges and serve with salsa or sour cream." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.5,
+    "chef": "QuickCook Pro",
+    "user_id": "3",
+    "created_at": "2024-07-30T10:05:00Z",
+    "updated_at": "2024-07-30T10:05:00Z"
+  },
+  {
+    "id": "150",
+    "title": "Grown-Up Grilled Cheese",
+    "description": "An elevated grilled cheese sandwich with gourmet cheeses and additions.",
+    "cuisine": "American",
+    "category": "Quick Dinners",
+    "difficulty": "Easy",
+    "prep_time": 5,
+    "cook_time": 10,
+    "servings": 1,
+    "tags": ["quick", "sandwich", "grilled cheese", "comfort food", "easy", "lunch"],
+    "ingredients": [
+      { "name": "Sourdough Bread Slices", "quantity": "2", "unit": "" },
+      { "name": "Gruyere Cheese (Sliced or Shredded)", "quantity": "2", "unit": "oz" },
+      { "name": "Sharp Cheddar Cheese (Sliced or Shredded)", "quantity": "1", "unit": "oz" },
+      { "name": "Butter", "quantity": "1", "unit": "tbsp" },
+      { "name": "Optional: Fig Jam, Bacon, Caramelized Onions", "quantity": "", "unit": "" }
+    ],
+    "instructions": [
+      { "step": 1, "text": "Butter one side of each bread slice." },
+      { "step": 2, "text": "Place one slice butter-side down in a non-stick skillet over medium-low heat." },
+      { "step": 3, "text": "Layer cheeses (and optional additions) on the bread in the skillet." },
+      { "step": 4, "text": "Top with the second bread slice, butter-side up." },
+      { "step": 5, "text": "Grill for 4-5 minutes per side, until bread is golden brown and cheese is melted and gooey." }
+    ],
+    "image": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500",
+    "rating": 4.7,
+    "chef": "Gourmet Guy",
+    "user_id": "3",
+    "created_at": "2024-07-30T10:10:00Z",
+    "updated_at": "2024-07-30T10:10:00Z"
+  }
+]
