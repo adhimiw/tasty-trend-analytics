@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { 
   Clock, 
   Users, 
@@ -25,11 +24,13 @@ import { Separator } from "@/components/ui/separator";
 import NavigationBar from "@/components/NavigationBar";
 import Footer from "@/components/Footer";
 import RecipeCard from "@/components/RecipeCard";
-import { getRecipeById, southIndianRecipes } from "@/lib/mockData";
+import { getRecipeById, southIndianRecipes, getRecipesByCategory } from "@/lib/mockData";
 import { toast } from "sonner";
+import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -46,22 +47,45 @@ const RecipeDetail = () => {
         // Simulate loading delay
         setTimeout(() => {
           const foundRecipe = getRecipeById(id);
+          
           if (foundRecipe) {
             setRecipe(foundRecipe);
             setServings(foundRecipe.servings || 4);
-            // Get 3 related recipes (excluding current recipe)
-            const related = southIndianRecipes
+            
+            // Get related recipes based on cuisine or category
+            let related = [];
+            if (foundRecipe.cuisine) {
+              related = getRecipesByCategory(foundRecipe.cuisine.toLowerCase().replace(/\s+/g, '-')) || [];
+            } else if (foundRecipe.category) {
+              related = getRecipesByCategory(foundRecipe.category.toLowerCase().replace(/\s+/g, '-')) || [];
+            }
+            
+            // Filter out the current recipe and get up to 3 random related recipes
+            related = related
               .filter(r => r.id !== id)
               .sort(() => 0.5 - Math.random())
               .slice(0, 3);
+            
+            // If we don't have enough related recipes, use South Indian as fallback
+            if (related.length < 3) {
+              const fallbackRecipes = southIndianRecipes
+                .filter(r => r.id !== id)
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3 - related.length);
+              
+              related = [...related, ...fallbackRecipes];
+            }
+            
             setRelatedRecipes(related);
           } else {
+            console.error(`Recipe with ID ${id} not found`);
             setError(true);
           }
           setLoading(false);
         }, 800);
       }
     } catch (err) {
+      console.error("Error loading recipe:", err);
       setError(true);
       setLoading(false);
     }
@@ -115,9 +139,19 @@ const RecipeDetail = () => {
             <p className="text-muted-foreground mb-6">
               The recipe you're looking for doesn't exist or has been removed.
             </p>
-            <Button asChild>
-              <Link to="/browse">Browse Recipes</Link>
-            </Button>
+            <div className="space-y-4">
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link to="/browse">Browse Recipes</Link>
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                onClick={() => navigate(-1)}
+              >
+                Go Back
+              </Button>
+            </div>
           </div>
         </div>
         <Footer />
@@ -131,7 +165,7 @@ const RecipeDetail = () => {
   const recipeServings = recipe.servings || 4;
 
   // Make sure instructions is always an array
-  const instructions = recipe.instructions || [];
+  const instructions = Array.isArray(recipe.instructions) ? recipe.instructions : [];
   const isStepObjectArray = instructions.length > 0 && typeof instructions[0] === 'object';
 
   return (

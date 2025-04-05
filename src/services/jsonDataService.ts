@@ -1,4 +1,3 @@
-
 import usersData from '../data/users.json';
 import profilesData from '../data/profiles.json';
 import recipesData from '../data/recipes.json';
@@ -158,16 +157,36 @@ export const getRecipes = () => {
 };
 
 export const getRecipeById = (id: string) => {
-  const recipes = getData(RECIPES_KEY);
-  const recipe = recipes.find((recipe: any) => recipe.id === id);
-  return recipe ? adaptRecipeToUI(recipe) : null;
+  try {
+    if (!id) return null;
+    
+    const recipes = getData(RECIPES_KEY);
+    const recipe = recipes.find((recipe: any) => recipe.id === id);
+    
+    if (!recipe) {
+      console.log(`Recipe with ID ${id} not found`);
+      return null;
+    }
+    
+    return adaptRecipeToUI(recipe);
+  } catch (error) {
+    console.error(`Error fetching recipe with ID ${id}:`, error);
+    return null;
+  }
 };
 
 export const getRecipesByUserId = (userId: string) => {
-  const recipes = getData(RECIPES_KEY);
-  return recipes
-    .filter((recipe: any) => recipe.user_id === userId)
-    .map(adaptRecipeToUI);
+  try {
+    if (!userId) return [];
+    
+    const recipes = getData(RECIPES_KEY);
+    return recipes
+      .filter((recipe: any) => recipe.user_id === userId)
+      .map(adaptRecipeToUI);
+  } catch (error) {
+    console.error(`Error fetching recipes for user ${userId}:`, error);
+    return [];
+  }
 };
 
 export const createRecipe = (recipe: Partial<RecipeUI>) => {

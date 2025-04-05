@@ -112,37 +112,64 @@ export const getAllRecipes = (): RecipeUI[] => {
 
 // Helper function to get a recipe by its ID
 export const getRecipeById = (id: string): RecipeUI | null => {
-  const recipe = getRecipeByIdService(id);
-  console.log("Recipe fetched:", id, recipe);
-  return recipe;
+  try {
+    if (!id) return null;
+    
+    const recipe = getRecipeByIdService(id);
+    console.log("Recipe fetched:", id, recipe);
+    
+    if (!recipe) {
+      console.error(`Recipe with ID ${id} not found in the database`);
+      return null;
+    }
+    
+    return recipe;
+  } catch (error) {
+    console.error(`Error getting recipe by ID ${id}:`, error);
+    return null;
+  }
 };
 
 // Helper function to get recipes by category
 export const getRecipesByCategory = (category: string): RecipeUI[] => {
-  const normalizedCategory = category.toLowerCase().replace(/\s+/g, '-');
-  return getCategoryRecipes(normalizedCategory);
+  try {
+    if (!category) return [];
+    
+    const normalizedCategory = category.toLowerCase().replace(/\s+/g, '-');
+    return getCategoryRecipes(normalizedCategory);
+  } catch (error) {
+    console.error(`Error getting recipes for category ${category}:`, error);
+    return [];
+  }
 };
 
 // Helper function to search recipes
 export const searchRecipes = (query: string): RecipeUI[] => {
-  const normalizedQuery = query.toLowerCase().trim();
-  return getAllCategorizedRecipes().filter((recipe) => {
-    // Search in title
-    if (recipe.title.toLowerCase().includes(normalizedQuery)) {
-      return true;
-    }
-    // Search in description
-    if (recipe.description && recipe.description.toLowerCase().includes(normalizedQuery)) {
-      return true;
-    }
-    // Search in tags
-    if (recipe.tags && recipe.tags.some((tag) => tag.toLowerCase().includes(normalizedQuery))) {
-      return true;
-    }
-    // Search in ingredients
-    if (recipe.ingredients && recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(normalizedQuery))) {
-      return true;
-    }
-    return false;
-  });
+  try {
+    if (!query) return [];
+    
+    const normalizedQuery = query.toLowerCase().trim();
+    return getAllCategorizedRecipes().filter((recipe) => {
+      // Search in title
+      if (recipe.title.toLowerCase().includes(normalizedQuery)) {
+        return true;
+      }
+      // Search in description
+      if (recipe.description && recipe.description.toLowerCase().includes(normalizedQuery)) {
+        return true;
+      }
+      // Search in tags
+      if (recipe.tags && recipe.tags.some((tag) => tag.toLowerCase().includes(normalizedQuery))) {
+        return true;
+      }
+      // Search in ingredients
+      if (recipe.ingredients && recipe.ingredients.some((ingredient) => ingredient.name.toLowerCase().includes(normalizedQuery))) {
+        return true;
+      }
+      return false;
+    });
+  } catch (error) {
+    console.error(`Error searching recipes for query ${query}:`, error);
+    return [];
+  }
 };
